@@ -1,6 +1,6 @@
 *.log
 node_modules
-/dist
+dist
 dev
 .idea
 coverage
