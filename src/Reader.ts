@@ -238,16 +238,14 @@ export const id: Category2<URI>['id'] = () => identity
  */
 export const first: Strong2<URI>['first'] =
   (pab) =>
-  ([a, c]) =>
-    [pab(a), c]
+  ([a, c]) => [pab(a), c]
 
 /**
  * @since 2.10.0
  */
 export const second: Strong2<URI>['second'] =
   (pbc) =>
-  ([a, b]) =>
-    [a, pbc(b)]
+  ([a, b]) => [a, pbc(b)]
 
 /**
  * @since 2.10.0

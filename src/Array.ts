@@ -1318,8 +1318,8 @@ export function comprehension<A, R>(
     isNonEmpty(input)
       ? flatMap(NEA.head(input), (a) => go(pipe(scope, append(a)), NEA.tail(input)))
       : g(...scope)
-      ? [f(...scope)]
-      : []
+        ? [f(...scope)]
+        : []
   return go([], input)
 }
 
@@ -1363,8 +1363,8 @@ export function union<A>(E: Eq<A>): (xs: Array<A>, ys?: Array<A>) => Array<A> | 
     return isNonEmpty(first) && isNonEmpty(second)
       ? unionE(second)(first)
       : isNonEmpty(first)
-      ? copy(first)
-      : copy(second)
+        ? copy(first)
+        : copy(second)
   }
 }
 
@@ -1786,9 +1786,9 @@ export const partition: {
  * @since 2.0.0
  */
 export const partitionWithIndex: {
-  <A, B extends A>(refinementWithIndex: RefinementWithIndex<number, A, B>): (
-    as: Array<A>
-  ) => Separated<Array<A>, Array<B>>
+  <A, B extends A>(
+    refinementWithIndex: RefinementWithIndex<number, A, B>
+  ): (as: Array<A>) => Separated<Array<A>, Array<B>>
   <A>(predicateWithIndex: PredicateWithIndex<number, A>): <B extends A>(bs: Array<B>) => Separated<Array<B>, Array<B>>
   <A>(predicateWithIndex: PredicateWithIndex<number, A>): (as: Array<A>) => Separated<Array<A>, Array<A>>
 } =

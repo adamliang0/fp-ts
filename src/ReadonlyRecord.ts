@@ -661,7 +661,9 @@ export function reduceRightWithIndex<A, B>(
  * @category constructors
  * @since 2.5.0
  */
-export const singleton = <A>(k: string, a: A): ReadonlyRecord<string, A> => ({ [k]: a })
+export const singleton = <A>(k: string, a: A): ReadonlyRecord<string, A> => ({
+  [k]: a
+})
 
 /**
  * @since 2.5.0
@@ -1522,15 +1524,15 @@ export const filterMap: <A, B>(
  * @since 2.5.0
  */
 export const partition: {
-  <A, B extends A>(refinement: Refinement<A, B>): (
-    fa: ReadonlyRecord<string, A>
-  ) => Separated<ReadonlyRecord<string, A>, ReadonlyRecord<string, B>>
-  <A>(predicate: Predicate<A>): <B extends A>(
-    fb: ReadonlyRecord<string, B>
-  ) => Separated<ReadonlyRecord<string, B>, ReadonlyRecord<string, B>>
-  <A>(predicate: Predicate<A>): (
-    fa: ReadonlyRecord<string, A>
-  ) => Separated<ReadonlyRecord<string, A>, ReadonlyRecord<string, A>>
+  <A, B extends A>(
+    refinement: Refinement<A, B>
+  ): (fa: ReadonlyRecord<string, A>) => Separated<ReadonlyRecord<string, A>, ReadonlyRecord<string, B>>
+  <A>(
+    predicate: Predicate<A>
+  ): <B extends A>(fb: ReadonlyRecord<string, B>) => Separated<ReadonlyRecord<string, B>, ReadonlyRecord<string, B>>
+  <A>(
+    predicate: Predicate<A>
+  ): (fa: ReadonlyRecord<string, A>) => Separated<ReadonlyRecord<string, A>, ReadonlyRecord<string, A>>
 } = <A>(
   predicate: Predicate<A>
 ): ((fa: ReadonlyRecord<string, A>) => Separated<ReadonlyRecord<string, A>, ReadonlyRecord<string, A>>) =>

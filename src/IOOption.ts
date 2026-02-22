@@ -298,10 +298,8 @@ export const filter: {
  * @category filtering
  * @since 2.12.0
  */
-export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fga: IOOption<A>) => IOOption<B> = /*#__PURE__*/ filterMap_(
-  I.Functor,
-  O.Filterable
-)
+export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fga: IOOption<A>) => IOOption<B> =
+  /*#__PURE__*/ filterMap_(I.Functor, O.Filterable)
 
 /**
  * @category filtering

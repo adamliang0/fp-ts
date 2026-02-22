@@ -110,10 +110,10 @@ export interface FilterWithIndex2<F extends URIS2, I> {
  * @since 2.0.0
  */
 export interface PartitionWithIndex2<F extends URIS2, I> {
-  <E, A, B extends A>(fa: Kind2<F, E, A>, refinementWithIndex: RefinementWithIndex<I, A, B>): Separated<
-    Kind2<F, E, A>,
-    Kind2<F, E, B>
-  >
+  <E, A, B extends A>(
+    fa: Kind2<F, E, A>,
+    refinementWithIndex: RefinementWithIndex<I, A, B>
+  ): Separated<Kind2<F, E, A>, Kind2<F, E, B>>
   <E, A>(fa: Kind2<F, E, A>, predicateWithIndex: PredicateWithIndex<I, A>): Separated<Kind2<F, E, A>, Kind2<F, E, A>>
 }
 
@@ -143,10 +143,10 @@ export interface FilterWithIndex2C<F extends URIS2, I, E> {
  * @since 2.0.0
  */
 export interface PartitionWithIndex2C<F extends URIS2, I, E> {
-  <A, B extends A>(fa: Kind2<F, E, A>, refinementWithIndex: RefinementWithIndex<I, A, B>): Separated<
-    Kind2<F, E, A>,
-    Kind2<F, E, B>
-  >
+  <A, B extends A>(
+    fa: Kind2<F, E, A>,
+    refinementWithIndex: RefinementWithIndex<I, A, B>
+  ): Separated<Kind2<F, E, A>, Kind2<F, E, B>>
   <A>(fa: Kind2<F, E, A>, predicateWithIndex: PredicateWithIndex<I, A>): Separated<Kind2<F, E, A>, Kind2<F, E, A>>
 }
 
@@ -198,28 +198,28 @@ export interface FilterableWithIndex3C<F extends URIS3, I, E> extends FunctorWit
  * @since 2.0.0
  */
 export interface PartitionWithIndex3<F extends URIS3, I> {
-  <R, E, A, B extends A>(fa: Kind3<F, R, E, A>, refinementWithIndex: RefinementWithIndex<I, A, B>): Separated<
-    Kind3<F, R, E, A>,
-    Kind3<F, R, E, B>
-  >
-  <R, E, A>(fa: Kind3<F, R, E, A>, predicateWithIndex: PredicateWithIndex<I, A>): Separated<
-    Kind3<F, R, E, A>,
-    Kind3<F, R, E, A>
-  >
+  <R, E, A, B extends A>(
+    fa: Kind3<F, R, E, A>,
+    refinementWithIndex: RefinementWithIndex<I, A, B>
+  ): Separated<Kind3<F, R, E, A>, Kind3<F, R, E, B>>
+  <R, E, A>(
+    fa: Kind3<F, R, E, A>,
+    predicateWithIndex: PredicateWithIndex<I, A>
+  ): Separated<Kind3<F, R, E, A>, Kind3<F, R, E, A>>
 }
 
 /**
  * @since 2.2.0
  */
 export interface PartitionWithIndex3C<F extends URIS3, I, E> {
-  <R, A, B extends A>(fa: Kind3<F, R, E, A>, refinementWithIndex: RefinementWithIndex<I, A, B>): Separated<
-    Kind3<F, R, E, A>,
-    Kind3<F, R, E, B>
-  >
-  <R, A>(fa: Kind3<F, R, E, A>, predicateWithIndex: PredicateWithIndex<I, A>): Separated<
-    Kind3<F, R, E, A>,
-    Kind3<F, R, E, A>
-  >
+  <R, A, B extends A>(
+    fa: Kind3<F, R, E, A>,
+    refinementWithIndex: RefinementWithIndex<I, A, B>
+  ): Separated<Kind3<F, R, E, A>, Kind3<F, R, E, B>>
+  <R, A>(
+    fa: Kind3<F, R, E, A>,
+    predicateWithIndex: PredicateWithIndex<I, A>
+  ): Separated<Kind3<F, R, E, A>, Kind3<F, R, E, A>>
 }
 
 /**
@@ -240,13 +240,10 @@ export interface FilterableWithIndex3<F extends URIS3, I> extends FunctorWithInd
  * @since 2.0.0
  */
 export interface FilterWithIndex4<F extends URIS4, I> {
-  <S, R, E, A, B extends A>(fa: Kind4<F, S, R, E, A>, refinementWithIndex: RefinementWithIndex<I, A, B>): Kind4<
-    F,
-    S,
-    R,
-    E,
-    B
-  >
+  <S, R, E, A, B extends A>(
+    fa: Kind4<F, S, R, E, A>,
+    refinementWithIndex: RefinementWithIndex<I, A, B>
+  ): Kind4<F, S, R, E, B>
   <S, R, E, A>(fa: Kind4<F, S, R, E, A>, predicateWithIndex: PredicateWithIndex<I, A>): Kind4<F, S, R, E, A>
 }
 
@@ -254,14 +251,14 @@ export interface FilterWithIndex4<F extends URIS4, I> {
  * @since 2.0.0
  */
 export interface PartitionWithIndex4<F extends URIS4, I> {
-  <S, R, E, A, B extends A>(fa: Kind4<F, S, R, E, A>, refinementWithIndex: RefinementWithIndex<I, A, B>): Separated<
-    Kind4<F, S, R, E, A>,
-    Kind4<F, S, R, E, B>
-  >
-  <S, R, E, A>(fa: Kind4<F, S, R, E, A>, predicateWithIndex: PredicateWithIndex<I, A>): Separated<
-    Kind4<F, S, R, E, A>,
-    Kind4<F, S, R, E, A>
-  >
+  <S, R, E, A, B extends A>(
+    fa: Kind4<F, S, R, E, A>,
+    refinementWithIndex: RefinementWithIndex<I, A, B>
+  ): Separated<Kind4<F, S, R, E, A>, Kind4<F, S, R, E, B>>
+  <S, R, E, A>(
+    fa: Kind4<F, S, R, E, A>,
+    predicateWithIndex: PredicateWithIndex<I, A>
+  ): Separated<Kind4<F, S, R, E, A>, Kind4<F, S, R, E, A>>
 }
 
 /**

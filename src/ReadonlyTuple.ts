@@ -171,10 +171,8 @@ const _traverse = <F>(
  * @category mapping
  * @since 2.5.0
  */
-export const bimap: <E, G, A, B>(
-  mapSnd: (e: E) => G,
-  mapFst: (a: A) => B
-) => (fa: readonly [A, E]) => readonly [B, G] = (f, g) => (fa) => [g(fst(fa)), f(snd(fa))]
+export const bimap: <E, G, A, B>(mapSnd: (e: E) => G, mapFst: (a: A) => B) => (fa: readonly [A, E]) => readonly [B, G] =
+  (f, g) => (fa) => [g(fst(fa)), f(snd(fa))]
 
 /**
  * Map a function over the first component of a `ReadonlyTuple`.
@@ -184,8 +182,10 @@ export const bimap: <E, G, A, B>(
  * @category mapping
  * @since 2.10.0
  */
-export const mapFst: <A, B>(f: (a: A) => B) => <E>(fa: readonly [A, E]) => readonly [B, E] = (f) => (fa) =>
-  [f(fst(fa)), snd(fa)]
+export const mapFst: <A, B>(f: (a: A) => B) => <E>(fa: readonly [A, E]) => readonly [B, E] = (f) => (fa) => [
+  f(fst(fa)),
+  snd(fa)
+]
 
 /**
  * Map a function over the second component of a `ReadonlyTuple`.
@@ -195,21 +195,24 @@ export const mapFst: <A, B>(f: (a: A) => B) => <E>(fa: readonly [A, E]) => reado
  * @category mapping
  * @since 2.10.0
  */
-export const mapSnd: <E, G>(f: (e: E) => G) => <A>(fa: readonly [A, E]) => readonly [A, G] = (f) => (fa) =>
-  [fst(fa), f(snd(fa))]
+export const mapSnd: <E, G>(f: (e: E) => G) => <A>(fa: readonly [A, E]) => readonly [A, G] = (f) => (fa) => [
+  fst(fa),
+  f(snd(fa))
+]
 
 /**
  * @since 2.5.0
  */
-export const compose: <A, B>(ab: readonly [B, A]) => <C>(bc: readonly [C, B]) => readonly [C, A] = (ab) => (bc) =>
-  [fst(bc), snd(ab)]
+export const compose: <A, B>(ab: readonly [B, A]) => <C>(bc: readonly [C, B]) => readonly [C, A] = (ab) => (bc) => [
+  fst(bc),
+  snd(ab)
+]
 
 /**
  * @since 2.5.0
  */
 export const extend: <E, A, B>(f: (wa: readonly [A, E]) => B) => (wa: readonly [A, E]) => readonly [B, E] =
-  (f) => (wa) =>
-    [f(wa), snd(wa)]
+  (f) => (wa) => [f(wa), snd(wa)]
 
 /**
  * @category Extract

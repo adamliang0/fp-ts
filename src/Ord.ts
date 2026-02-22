@@ -403,7 +403,7 @@ export const clamp = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => A) => {
 export const between = <A>(O: Ord<A>): ((low: A, hi: A) => (a: A) => boolean) => {
   const ltO = lt(O)
   const gtO = gt(O)
-  return (low, hi) => (a) => ltO(a, low) || gtO(a, hi) ? false : true
+  return (low, hi) => (a) => (ltO(a, low) || gtO(a, hi) ? false : true)
 }
 
 // -------------------------------------------------------------------------------------

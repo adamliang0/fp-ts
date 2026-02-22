@@ -142,7 +142,9 @@ export const reverse: <A>(S: Semigroup<A>) => Semigroup<A> = M.reverse
  *
  * @since 2.10.0
  */
-export const struct = <A>(semigroups: { [K in keyof A]: Semigroup<A[K]> }): Semigroup<{
+export const struct = <A>(semigroups: {
+  [K in keyof A]: Semigroup<A[K]>
+}): Semigroup<{
   readonly [K in keyof A]: A[K]
 }> => ({
   concat: (first, second) => {
@@ -302,7 +304,9 @@ export const getFirstSemigroup = first
  */
 export const getTupleSemigroup: <T extends ReadonlyArray<Semigroup<any>>>(
   ...semigroups: T
-) => Semigroup<{ [K in keyof T]: T[K] extends Semigroup<infer A> ? A : never }> = tuple as any
+) => Semigroup<{
+  [K in keyof T]: T[K] extends Semigroup<infer A> ? A : never
+}> = tuple as any
 
 /**
  * Use [`struct`](#struct) instead.

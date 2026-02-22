@@ -1249,8 +1249,8 @@ export function comprehension<A, R>(
     isNonEmpty(input)
       ? flatMap(RNEA.head(input), (a) => go(pipe(scope, append(a)), RNEA.tail(input)))
       : g(...scope)
-      ? [f(...scope)]
-      : empty
+        ? [f(...scope)]
+        : empty
   return go(empty, input)
 }
 
@@ -1609,9 +1609,9 @@ export const compact: <A>(fa: ReadonlyArray<Option<A>>) => ReadonlyArray<A> = /*
  * @since 2.5.0
  */
 export const partition: {
-  <A, B extends A>(refinement: Refinement<A, B>): (
-    as: ReadonlyArray<A>
-  ) => Separated<ReadonlyArray<A>, ReadonlyArray<B>>
+  <A, B extends A>(
+    refinement: Refinement<A, B>
+  ): (as: ReadonlyArray<A>) => Separated<ReadonlyArray<A>, ReadonlyArray<B>>
   <A>(predicate: Predicate<A>): <B extends A>(bs: ReadonlyArray<B>) => Separated<ReadonlyArray<B>, ReadonlyArray<B>>
   <A>(predicate: Predicate<A>): (as: ReadonlyArray<A>) => Separated<ReadonlyArray<A>, ReadonlyArray<A>>
 } = <A>(predicate: Predicate<A>): ((as: ReadonlyArray<A>) => Separated<ReadonlyArray<A>, ReadonlyArray<A>>) =>
@@ -1622,15 +1622,15 @@ export const partition: {
  * @since 2.5.0
  */
 export const partitionWithIndex: {
-  <A, B extends A>(refinementWithIndex: RefinementWithIndex<number, A, B>): (
-    as: ReadonlyArray<A>
-  ) => Separated<ReadonlyArray<A>, ReadonlyArray<B>>
-  <A>(predicateWithIndex: PredicateWithIndex<number, A>): <B extends A>(
-    bs: ReadonlyArray<B>
-  ) => Separated<ReadonlyArray<B>, ReadonlyArray<B>>
-  <A>(predicateWithIndex: PredicateWithIndex<number, A>): (
-    as: ReadonlyArray<A>
-  ) => Separated<ReadonlyArray<A>, ReadonlyArray<A>>
+  <A, B extends A>(
+    refinementWithIndex: RefinementWithIndex<number, A, B>
+  ): (as: ReadonlyArray<A>) => Separated<ReadonlyArray<A>, ReadonlyArray<B>>
+  <A>(
+    predicateWithIndex: PredicateWithIndex<number, A>
+  ): <B extends A>(bs: ReadonlyArray<B>) => Separated<ReadonlyArray<B>, ReadonlyArray<B>>
+  <A>(
+    predicateWithIndex: PredicateWithIndex<number, A>
+  ): (as: ReadonlyArray<A>) => Separated<ReadonlyArray<A>, ReadonlyArray<A>>
 } =
   <A>(predicateWithIndex: PredicateWithIndex<number, A>) =>
   (as: ReadonlyArray<A>): Separated<ReadonlyArray<A>, ReadonlyArray<A>> => {

@@ -111,10 +111,8 @@ export const right: <R, E = never, A = never>(a: A) => ReaderTaskEither<R, E, A>
  * @category constructors
  * @since 2.0.0
  */
-export const rightTask: <R, E = never, A = never>(ma: Task<A>) => ReaderTaskEither<R, E, A> = /*#__PURE__*/ flow(
-  TE.rightTask,
-  fromTaskEither
-)
+export const rightTask: <R, E = never, A = never>(ma: Task<A>) => ReaderTaskEither<R, E, A> =
+  /*#__PURE__*/ flow(TE.rightTask, fromTaskEither)
 
 /**
  * @category constructors
@@ -217,10 +215,8 @@ export const fromTask: <A, R = unknown, E = never>(fa: Task<A>) => ReaderTaskEit
  * @category conversions
  * @since 2.0.0
  */
-export const fromIOEither: <E, A, R = unknown>(fa: IOEither<E, A>) => ReaderTaskEither<R, E, A> = /*#__PURE__*/ flow(
-  TE.fromIOEither,
-  fromTaskEither
-)
+export const fromIOEither: <E, A, R = unknown>(fa: IOEither<E, A>) => ReaderTaskEither<R, E, A> =
+  /*#__PURE__*/ flow(TE.fromIOEither, fromTaskEither)
 
 /**
  * @category conversions
@@ -348,9 +344,8 @@ export const chainNullableK: <E>(
   e: E
 ) => <A, B>(
   f: (a: A) => B | null | undefined
-) => <R>(ma: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, NonNullable<B>> = /*#__PURE__*/ ET.chainNullableK(
-  RT.Monad
-)
+) => <R>(ma: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, NonNullable<B>> =
+  /*#__PURE__*/ ET.chainNullableK(RT.Monad)
 
 // -------------------------------------------------------------------------------------
 // combinators
@@ -414,9 +409,9 @@ export const orElseW: <E1, R1, E2, B>(
  * @since 2.15.0
  */
 export const tapError: {
-  <E1, R2, E2, _>(onLeft: (e: E1) => ReaderTaskEither<R2, E2, _>): <R1, A>(
-    self: ReaderTaskEither<R1, E1, A>
-  ) => ReaderTaskEither<R1 & R2, E1 | E2, A>
+  <E1, R2, E2, _>(
+    onLeft: (e: E1) => ReaderTaskEither<R2, E2, _>
+  ): <R1, A>(self: ReaderTaskEither<R1, E1, A>) => ReaderTaskEither<R1 & R2, E1 | E2, A>
   <R1, E1, A, R2, E2, _>(
     self: ReaderTaskEither<R1, E1, A>,
     onLeft: (e: E1) => ReaderTaskEither<R2, E2, _>
@@ -584,14 +579,13 @@ export const of: <R = unknown, E = never, A = never>(a: A) => ReaderTaskEither<R
  * @since 2.14.0
  */
 export const flatMap: {
-  <A, R2, E2, B>(f: (a: A) => ReaderTaskEither<R2, E2, B>): <R1, E1>(
-    ma: ReaderTaskEither<R1, E1, A>
-  ) => ReaderTaskEither<R1 & R2, E1 | E2, B>
-  <R1, E1, A, R2, E2, B>(ma: ReaderTaskEither<R1, E1, A>, f: (a: A) => ReaderTaskEither<R2, E2, B>): ReaderTaskEither<
-    R1 & R2,
-    E1 | E2,
-    B
-  >
+  <A, R2, E2, B>(
+    f: (a: A) => ReaderTaskEither<R2, E2, B>
+  ): <R1, E1>(ma: ReaderTaskEither<R1, E1, A>) => ReaderTaskEither<R1 & R2, E1 | E2, B>
+  <R1, E1, A, R2, E2, B>(
+    ma: ReaderTaskEither<R1, E1, A>,
+    f: (a: A) => ReaderTaskEither<R2, E2, B>
+  ): ReaderTaskEither<R1 & R2, E1 | E2, B>
 } = /*#__PURE__*/ dual(2, ET.flatMap(RT.Monad))
 
 /**
@@ -974,14 +968,13 @@ export const FromReader: FromReader3<URI> = {
  * @since 2.15.0
  */
 export const tap: {
-  <R1, E1, A, R2, E2, _>(self: ReaderTaskEither<R1, E1, A>, f: (a: A) => ReaderTaskEither<R2, E2, _>): ReaderTaskEither<
-    R1 & R2,
-    E1 | E2,
-    A
-  >
-  <A, R2, E2, _>(f: (a: A) => ReaderTaskEither<R2, E2, _>): <R1, E1>(
-    self: ReaderTaskEither<R1, E1, A>
-  ) => ReaderTaskEither<R1 & R2, E2 | E1, A>
+  <R1, E1, A, R2, E2, _>(
+    self: ReaderTaskEither<R1, E1, A>,
+    f: (a: A) => ReaderTaskEither<R2, E2, _>
+  ): ReaderTaskEither<R1 & R2, E1 | E2, A>
+  <A, R2, E2, _>(
+    f: (a: A) => ReaderTaskEither<R2, E2, _>
+  ): <R1, E1>(self: ReaderTaskEither<R1, E1, A>) => ReaderTaskEither<R1 & R2, E2 | E1, A>
 } = /*#__PURE__*/ dual(2, chainable.tap(Chain))
 
 /**
@@ -1092,14 +1085,13 @@ export const tapReader: {
  * @since 2.16.0
  */
 export const tapReaderEither: {
-  <A, R2, E2, _>(f: (a: A) => ReaderEither<R2, E2, _>): <R1, E1>(
-    self: ReaderTaskEither<R1, E1, A>
-  ) => ReaderTaskEither<R1 & R2, E1 | E2, A>
-  <R1, E1, A, R2, E2, _>(self: ReaderTaskEither<R1, E1, A>, f: (a: A) => ReaderEither<R2, E2, _>): ReaderTaskEither<
-    R1 & R2,
-    E1 | E2,
-    A
-  >
+  <A, R2, E2, _>(
+    f: (a: A) => ReaderEither<R2, E2, _>
+  ): <R1, E1>(self: ReaderTaskEither<R1, E1, A>) => ReaderTaskEither<R1 & R2, E1 | E2, A>
+  <R1, E1, A, R2, E2, _>(
+    self: ReaderTaskEither<R1, E1, A>,
+    f: (a: A) => ReaderEither<R2, E2, _>
+  ): ReaderTaskEither<R1 & R2, E1 | E2, A>
 } = /*#__PURE__*/ dual(
   2,
   <R1, E1, A, R2, E2, _>(
@@ -1116,9 +1108,9 @@ export const tapReaderEither: {
  * @since 2.16.0
  */
 export const tapTaskEither: {
-  <A, E2, _>(f: (a: A) => TaskEither<E2, _>): <R, E1>(
-    self: ReaderTaskEither<R, E1, A>
-  ) => ReaderTaskEither<R, E1 | E2, A>
+  <A, E2, _>(
+    f: (a: A) => TaskEither<E2, _>
+  ): <R, E1>(self: ReaderTaskEither<R, E1, A>) => ReaderTaskEither<R, E1 | E2, A>
   <R, E1, A, E2, _>(self: ReaderTaskEither<R, E1, A>, f: (a: A) => TaskEither<E2, _>): ReaderTaskEither<R, E1 | E2, A>
 } = /*#__PURE__*/ dual(
   2,
@@ -1136,9 +1128,9 @@ export const tapTaskEither: {
  * @since 2.16.0
  */
 export const tapReaderTask: {
-  <A, R2, _>(f: (a: A) => ReaderTask<R2, _>): <R1, E>(
-    self: ReaderTaskEither<R1, E, A>
-  ) => ReaderTaskEither<R1 & R2, E, A>
+  <A, R2, _>(
+    f: (a: A) => ReaderTask<R2, _>
+  ): <R1, E>(self: ReaderTaskEither<R1, E, A>) => ReaderTaskEither<R1 & R2, E, A>
   <R1, E, A, R2, _>(self: ReaderTaskEither<R1, E, A>, f: (a: A) => ReaderTask<R2, _>): ReaderTaskEither<R1 & R2, E, A>
 } = /*#__PURE__*/ dual(
   2,
@@ -1442,9 +1434,10 @@ const _FromReader: _.FromReader<ReaderTaskEitherTypeLambda> = {
  * @since 2.15.0
  */
 export const flatMapNullable: {
-  <A, B, E2>(f: (a: A) => B | null | undefined, onNullable: (a: A) => E2): <R, E1>(
-    self: ReaderTaskEither<R, E1, A>
-  ) => ReaderTaskEither<R, E2 | E1, NonNullable<B>>
+  <A, B, E2>(
+    f: (a: A) => B | null | undefined,
+    onNullable: (a: A) => E2
+  ): <R, E1>(self: ReaderTaskEither<R, E1, A>) => ReaderTaskEither<R, E2 | E1, NonNullable<B>>
   <R, E1, A, B, E2>(
     self: ReaderTaskEither<R, E1, A>,
     f: (a: A) => B | null | undefined,
@@ -1457,14 +1450,15 @@ export const flatMapNullable: {
  * @since 2.15.0
  */
 export const flatMapOption: {
-  <A, B, E2>(f: (a: A) => Option<B>, onNone: (a: A) => E2): <R, E1>(
-    self: ReaderTaskEither<R, E1, A>
-  ) => ReaderTaskEither<R, E2 | E1, B>
-  <R, E1, A, B, E2>(self: ReaderTaskEither<R, E1, A>, f: (a: A) => Option<B>, onNone: (a: A) => E2): ReaderTaskEither<
-    R,
-    E1 | E2,
-    B
-  >
+  <A, B, E2>(
+    f: (a: A) => Option<B>,
+    onNone: (a: A) => E2
+  ): <R, E1>(self: ReaderTaskEither<R, E1, A>) => ReaderTaskEither<R, E2 | E1, B>
+  <R, E1, A, B, E2>(
+    self: ReaderTaskEither<R, E1, A>,
+    f: (a: A) => Option<B>,
+    onNone: (a: A) => E2
+  ): ReaderTaskEither<R, E1 | E2, B>
 } = /*#__PURE__*/ _.flatMapOption(_FromEither, _FlatMap)
 
 /**
@@ -1481,9 +1475,9 @@ export const flatMapEither: {
  * @since 2.16.0
  */
 export const flatMapTaskEither: {
-  <A, E2, B>(f: (a: A) => TaskEither<E2, B>): <R, E1>(
-    self: ReaderTaskEither<R, E1, A>
-  ) => ReaderTaskEither<R, E1 | E2, B>
+  <A, E2, B>(
+    f: (a: A) => TaskEither<E2, B>
+  ): <R, E1>(self: ReaderTaskEither<R, E1, A>) => ReaderTaskEither<R, E1 | E2, B>
   <R, E1, A, E2, B>(self: ReaderTaskEither<R, E1, A>, f: (a: A) => TaskEither<E2, B>): ReaderTaskEither<R, E1 | E2, B>
 } = /*#__PURE__*/ dual(
   2,
@@ -1498,9 +1492,9 @@ export const flatMapTaskEither: {
  * @since 2.16.0
  */
 export const flatMapReaderTask: {
-  <A, R2, B>(f: (a: A) => ReaderTask<R2, B>): <R1, E>(
-    self: ReaderTaskEither<R1, E, A>
-  ) => ReaderTaskEither<R1 & R2, E, B>
+  <A, R2, B>(
+    f: (a: A) => ReaderTask<R2, B>
+  ): <R1, E>(self: ReaderTaskEither<R1, E, A>) => ReaderTaskEither<R1 & R2, E, B>
   <R1, E, A, R2, B>(self: ReaderTaskEither<R1, E, A>, f: (a: A) => ReaderTask<R2, B>): ReaderTaskEither<R1 & R2, E, B>
 } = /*#__PURE__*/ dual(
   2,
@@ -1568,14 +1562,13 @@ export const flatMapIOEither: {
  * @since 2.16.0
  */
 export const flatMapReaderEither: {
-  <A, R2, E2, B>(f: (a: A) => ReaderEither<R2, E2, B>): <R1, E1>(
-    self: ReaderTaskEither<R1, E1, A>
-  ) => ReaderTaskEither<R1 & R2, E1 | E2, B>
-  <R1, E1, A, R2, E2, B>(self: ReaderTaskEither<R1, E1, A>, f: (a: A) => ReaderEither<R2, E2, B>): ReaderTaskEither<
-    R1 & R2,
-    E1 | E2,
-    B
-  >
+  <A, R2, E2, B>(
+    f: (a: A) => ReaderEither<R2, E2, B>
+  ): <R1, E1>(self: ReaderTaskEither<R1, E1, A>) => ReaderTaskEither<R1 & R2, E1 | E2, B>
+  <R1, E1, A, R2, E2, B>(
+    self: ReaderTaskEither<R1, E1, A>,
+    f: (a: A) => ReaderEither<R2, E2, B>
+  ): ReaderTaskEither<R1 & R2, E1 | E2, B>
 } = /*#__PURE__*/ dual(
   2,
   <R1, E1, A, R2, E2, B>(
@@ -1681,12 +1674,14 @@ export const chainReaderTaskK: <A, R, B>(
  * @since 2.0.0
  */
 export const fromPredicate: {
-  <E, A, B extends A>(refinement: Refinement<A, B>, onFalse: (a: A) => E): <R = unknown>(
-    a: A
-  ) => ReaderTaskEither<R, E, B>
-  <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <R = unknown, B extends A = A>(
-    b: B
-  ) => ReaderTaskEither<R, E, B>
+  <E, A, B extends A>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E
+  ): <R = unknown>(a: A) => ReaderTaskEither<R, E, B>
+  <E, A>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E
+  ): <R = unknown, B extends A = A>(b: B) => ReaderTaskEither<R, E, B>
   <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <R = unknown>(a: A) => ReaderTaskEither<R, E, A>
 } = /*#__PURE__*/ fromPredicate_(FromEither)
 
@@ -1695,12 +1690,14 @@ export const fromPredicate: {
  * @since 2.0.0
  */
 export const filterOrElse: {
-  <E, A, B extends A>(refinement: Refinement<A, B>, onFalse: (a: A) => E): <R>(
-    ma: ReaderTaskEither<R, E, A>
-  ) => ReaderTaskEither<R, E, B>
-  <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <R, B extends A>(
-    mb: ReaderTaskEither<R, E, B>
-  ) => ReaderTaskEither<R, E, B>
+  <E, A, B extends A>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E
+  ): <R>(ma: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, B>
+  <E, A>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E
+  ): <R, B extends A>(mb: ReaderTaskEither<R, E, B>) => ReaderTaskEither<R, E, B>
   <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <R>(ma: ReaderTaskEither<R, E, A>) => ReaderTaskEither<R, E, A>
 } = /*#__PURE__*/ filterOrElse_(FromEither, Chain)
 
@@ -1713,15 +1710,18 @@ export const filterOrElse: {
  * @since 2.9.0
  */
 export const filterOrElseW: {
-  <A, B extends A, E2>(refinement: Refinement<A, B>, onFalse: (a: A) => E2): <R, E1>(
-    ma: ReaderTaskEither<R, E1, A>
-  ) => ReaderTaskEither<R, E1 | E2, B>
-  <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <R, E1, B extends A>(
-    mb: ReaderTaskEither<R, E1, B>
-  ) => ReaderTaskEither<R, E1 | E2, B>
-  <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <R, E1>(
-    ma: ReaderTaskEither<R, E1, A>
-  ) => ReaderTaskEither<R, E1 | E2, A>
+  <A, B extends A, E2>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E2
+  ): <R, E1>(ma: ReaderTaskEither<R, E1, A>) => ReaderTaskEither<R, E1 | E2, B>
+  <A, E2>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E2
+  ): <R, E1, B extends A>(mb: ReaderTaskEither<R, E1, B>) => ReaderTaskEither<R, E1 | E2, B>
+  <A, E2>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E2
+  ): <R, E1>(ma: ReaderTaskEither<R, E1, A>) => ReaderTaskEither<R, E1 | E2, A>
 } = filterOrElse
 
 /**

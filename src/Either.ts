@@ -267,8 +267,8 @@ export const getCompactable = <E>(M: Monoid<E>): Compactable2C<URI, E> => {
       isLeft(ma)
         ? separated(ma, ma)
         : isLeft(ma.right)
-        ? separated(right(ma.right.left), empty)
-        : separated(empty, right(ma.right.right))
+          ? separated(right(ma.right.left), empty)
+          : separated(empty, right(ma.right.right))
   }
 }
 
@@ -290,8 +290,8 @@ export const getFilterable = <E>(M: Monoid<E>): Filterable2C<URI, E> => {
     return isLeft(ma)
       ? separated(ma, ma)
       : p(ma.right)
-      ? separated(empty, right(ma.right))
-      : separated(right(ma.right), empty)
+        ? separated(empty, right(ma.right))
+        : separated(right(ma.right), empty)
   }
 
   return {
@@ -411,8 +411,8 @@ export const getApplicativeValidation = <E>(SE: Semigroup<E>): Applicative2C<URI
         ? left(SE.concat(fab.left, fa.left))
         : fab
       : isLeft(fa)
-      ? fa
-      : right(fab.right(fa.right)),
+        ? fa
+        : right(fab.right(fa.right)),
   of
 })
 
@@ -1185,10 +1185,8 @@ export const fromOptionK: <E>(
  */
 export const chainOptionK: <E>(
   onNone: LazyArg<E>
-) => <A, B>(f: (a: A) => Option<B>) => (ma: Either<E, A>) => Either<E, B> = /*#__PURE__*/ chainOptionK_(
-  FromEither,
-  Chain
-)
+) => <A, B>(f: (a: A) => Option<B>) => (ma: Either<E, A>) => Either<E, B> =
+  /*#__PURE__*/ chainOptionK_(FromEither, Chain)
 
 /**
  * Use `flatMapOption`.
@@ -1238,13 +1236,15 @@ const _FlatMap: _.FlatMap<EitherTypeLambda> = {
  * @since 2.15.0
  */
 export const flatMapNullable: {
-  <A, B, E2>(f: (a: A) => B | null | undefined, onNullable: (a: A) => E2): <E1>(
-    self: Either<E1, A>
-  ) => Either<E2 | E1, NonNullable<B>>
-  <E1, A, B, E2>(self: Either<E1, A>, f: (a: A) => B | null | undefined, onNullable: (a: A) => E2): Either<
-    E1 | E2,
-    NonNullable<B>
-  >
+  <A, B, E2>(
+    f: (a: A) => B | null | undefined,
+    onNullable: (a: A) => E2
+  ): <E1>(self: Either<E1, A>) => Either<E2 | E1, NonNullable<B>>
+  <E1, A, B, E2>(
+    self: Either<E1, A>,
+    f: (a: A) => B | null | undefined,
+    onNullable: (a: A) => E2
+  ): Either<E1 | E2, NonNullable<B>>
 } = /*#__PURE__*/ _.flatMapNullable(_FromEither, _FlatMap)
 
 /**
@@ -1310,9 +1310,10 @@ export const filterOrElse: {
  * @since 2.9.0
  */
 export const filterOrElseW: {
-  <A, B extends A, E2>(refinement: Refinement<A, B>, onFalse: (a: A) => E2): <E1>(
-    ma: Either<E1, A>
-  ) => Either<E1 | E2, B>
+  <A, B extends A, E2>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E2
+  ): <E1>(ma: Either<E1, A>) => Either<E1 | E2, B>
   <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <E1, B extends A>(mb: Either<E1, B>) => Either<E1 | E2, B>
   <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <E1>(ma: Either<E1, A>) => Either<E1 | E2, A>
 } = filterOrElse

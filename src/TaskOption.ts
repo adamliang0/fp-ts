@@ -265,9 +265,8 @@ export const map: <A, B>(f: (a: A) => B) => (fa: TaskOption<A>) => TaskOption<B>
 /**
  * @since 2.10.0
  */
-export const ap: <A>(fa: TaskOption<A>) => <B>(fab: TaskOption<(a: A) => B>) => TaskOption<B> = /*#__PURE__*/ OT.ap(
-  T.ApplyPar
-)
+export const ap: <A>(fa: TaskOption<A>) => <B>(fab: TaskOption<(a: A) => B>) => TaskOption<B> =
+  /*#__PURE__*/ OT.ap(T.ApplyPar)
 
 /**
  * @category constructors
@@ -402,10 +401,8 @@ export const partition: {
  */
 export const partitionMap: <A, B, C>(
   f: (a: A) => Either<B, C>
-) => (fa: TaskOption<A>) => Separated<TaskOption<B>, TaskOption<C>> = /*#__PURE__*/ partitionMap_(
-  T.Functor,
-  O.Filterable
-)
+) => (fa: TaskOption<A>) => Separated<TaskOption<B>, TaskOption<C>> =
+  /*#__PURE__*/ partitionMap_(T.Functor, O.Filterable)
 
 // -------------------------------------------------------------------------------------
 // instances

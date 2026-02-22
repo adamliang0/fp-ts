@@ -280,9 +280,8 @@ export const toUnion: <E, A>(fa: TaskEither<E, A>) => Task<E | A> = /*#__PURE__*
  * @category conversions
  * @since 2.12.0
  */
-export const fromNullable: <E>(e: E) => <A>(a: A) => TaskEither<E, NonNullable<A>> = /*#__PURE__*/ ET.fromNullable(
-  T.Pointed
-)
+export const fromNullable: <E>(e: E) => <A>(a: A) => TaskEither<E, NonNullable<A>> =
+  /*#__PURE__*/ ET.fromNullable(T.Pointed)
 
 /**
  * Use `liftNullable`.
@@ -442,9 +441,8 @@ const _alt: Alt2<URI>['alt'] = (fa, that) => pipe(fa, alt(that))
  * @category mapping
  * @since 2.0.0
  */
-export const map: <A, B>(f: (a: A) => B) => <E>(fa: TaskEither<E, A>) => TaskEither<E, B> = /*#__PURE__*/ ET.map(
-  T.Functor
-)
+export const map: <A, B>(f: (a: A) => B) => <E>(fa: TaskEither<E, A>) => TaskEither<E, B> =
+  /*#__PURE__*/ ET.map(T.Functor)
 
 /**
  * Returns a `TaskEither` whose failure and success channels have been mapped by the specified pair of functions, `f` and `g`.
@@ -1136,10 +1134,8 @@ export const fromOptionK: <E>(
  */
 export const chainOptionK: <E>(
   onNone: LazyArg<E>
-) => <A, B>(f: (a: A) => Option<B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> = /*#__PURE__*/ chainOptionK_(
-  FromEither,
-  Chain
-)
+) => <A, B>(f: (a: A) => Option<B>) => (ma: TaskEither<E, A>) => TaskEither<E, B> =
+  /*#__PURE__*/ chainOptionK_(FromEither, Chain)
 
 /**
  * Use `flatMapOption`.
@@ -1199,13 +1195,15 @@ const _FromTask: _.FromTask<TaskEitherTypeLambda> = {
  * @since 2.15.0
  */
 export const flatMapNullable: {
-  <A, B, E2>(f: (a: A) => B | null | undefined, onNullable: (a: A) => E2): <E1>(
-    self: TaskEither<E1, A>
-  ) => TaskEither<E2 | E1, NonNullable<B>>
-  <E1, A, B, E2>(self: TaskEither<E1, A>, f: (a: A) => B | null | undefined, onNullable: (a: A) => E2): TaskEither<
-    E1 | E2,
-    NonNullable<B>
-  >
+  <A, B, E2>(
+    f: (a: A) => B | null | undefined,
+    onNullable: (a: A) => E2
+  ): <E1>(self: TaskEither<E1, A>) => TaskEither<E2 | E1, NonNullable<B>>
+  <E1, A, B, E2>(
+    self: TaskEither<E1, A>,
+    f: (a: A) => B | null | undefined,
+    onNullable: (a: A) => E2
+  ): TaskEither<E1 | E2, NonNullable<B>>
 } = /*#__PURE__*/ _.flatMapNullable(_FromEither, _FlatMap)
 
 /**
@@ -1341,12 +1339,14 @@ export const filterOrElse: {
  * @since 2.9.0
  */
 export const filterOrElseW: {
-  <A, B extends A, E2>(refinement: Refinement<A, B>, onFalse: (a: A) => E2): <E1>(
-    ma: TaskEither<E1, A>
-  ) => TaskEither<E1 | E2, B>
-  <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <E1, B extends A>(
-    mb: TaskEither<E1, B>
-  ) => TaskEither<E1 | E2, B>
+  <A, B extends A, E2>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E2
+  ): <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, B>
+  <A, E2>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E2
+  ): <E1, B extends A>(mb: TaskEither<E1, B>) => TaskEither<E1 | E2, B>
   <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <E1>(ma: TaskEither<E1, A>) => TaskEither<E1 | E2, A>
 } = filterOrElse
 

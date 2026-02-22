@@ -38,7 +38,10 @@ export interface Separated<E, A> {
  * @category constructors
  * @since 2.10.0
  */
-export const separated = <E, A>(left: E, right: A): Separated<E, A> => ({ left, right })
+export const separated = <E, A>(left: E, right: A): Separated<E, A> => ({
+  left,
+  right
+})
 
 const _map: Functor2<URI>['map'] = (fa, f) => pipe(fa, map(f))
 const _mapLeft: Bifunctor2<URI>['mapLeft'] = (fa, f) => pipe(fa, mapLeft(f))

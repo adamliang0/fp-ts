@@ -366,21 +366,24 @@ export function filterOrElse<M extends URIS4>(
   F: FromEither4<M>,
   M: Chain4<M>
 ): {
-  <A, B extends A, E>(refinement: Refinement<A, B>, onFalse: (a: A) => E): <S, R>(
-    ma: Kind4<M, S, R, E, A>
-  ) => Kind4<M, S, R, E, B>
-  <A, E>(predicate: Predicate<A>, onFalse: (a: A) => E): <S, R, B extends A>(
-    mb: Kind4<M, S, R, E, B>
-  ) => Kind4<M, S, R, E, B>
+  <A, B extends A, E>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E
+  ): <S, R>(ma: Kind4<M, S, R, E, A>) => Kind4<M, S, R, E, B>
+  <A, E>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E
+  ): <S, R, B extends A>(mb: Kind4<M, S, R, E, B>) => Kind4<M, S, R, E, B>
   <A, E>(predicate: Predicate<A>, onFalse: (a: A) => E): <S, R>(ma: Kind4<M, S, R, E, A>) => Kind4<M, S, R, E, A>
 }
 export function filterOrElse<M extends URIS3>(
   F: FromEither3<M>,
   M: Chain3<M>
 ): {
-  <A, B extends A, E>(refinement: Refinement<A, B>, onFalse: (a: A) => E): <R>(
-    ma: Kind3<M, R, E, A>
-  ) => Kind3<M, R, E, B>
+  <A, B extends A, E>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E
+  ): <R>(ma: Kind3<M, R, E, A>) => Kind3<M, R, E, B>
   <A, E>(predicate: Predicate<A>, onFalse: (a: A) => E): <R, B extends A>(mb: Kind3<M, R, E, B>) => Kind3<M, R, E, B>
   <A, E>(predicate: Predicate<A>, onFalse: (a: A) => E): <R>(ma: Kind3<M, R, E, A>) => Kind3<M, R, E, A>
 }

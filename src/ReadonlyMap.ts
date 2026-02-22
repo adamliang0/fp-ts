@@ -669,12 +669,12 @@ export const mapWithIndex: <K, A, B>(f: (k: K, a: A) => B) => (fa: ReadonlyMap<K
  * @since 2.5.0
  */
 export const partition: {
-  <A, B extends A>(refinement: Refinement<A, B>): <K>(
-    fa: ReadonlyMap<K, A>
-  ) => Separated<ReadonlyMap<K, A>, ReadonlyMap<K, B>>
-  <A>(predicate: Predicate<A>): <K, B extends A>(
-    fb: ReadonlyMap<K, B>
-  ) => Separated<ReadonlyMap<K, B>, ReadonlyMap<K, B>>
+  <A, B extends A>(
+    refinement: Refinement<A, B>
+  ): <K>(fa: ReadonlyMap<K, A>) => Separated<ReadonlyMap<K, A>, ReadonlyMap<K, B>>
+  <A>(
+    predicate: Predicate<A>
+  ): <K, B extends A>(fb: ReadonlyMap<K, B>) => Separated<ReadonlyMap<K, B>, ReadonlyMap<K, B>>
   <A>(predicate: Predicate<A>): <K>(fa: ReadonlyMap<K, A>) => Separated<ReadonlyMap<K, A>, ReadonlyMap<K, A>>
 } =
   <A>(predicate: Predicate<A>) =>

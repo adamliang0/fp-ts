@@ -51,7 +51,7 @@ export const tuple = <A extends ReadonlyArray<unknown>>(...rings: { [K in keyof 
     mul: (x: any, y: any) => rings.map((R, i) => R.mul(x[i], y[i])),
     one: rings.map((R) => R.one),
     sub: (x: any, y: any) => rings.map((R, i) => R.sub(x[i], y[i]))
-  } as any)
+  }) as any
 
 // -------------------------------------------------------------------------------------
 // utils

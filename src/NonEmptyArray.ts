@@ -73,8 +73,7 @@ export const isOutOfBound = <A>(i: number, as: Array<A>): boolean => i < 0 || i 
  */
 export const prependW =
   <B>(head: B) =>
-  <A>(tail: Array<A>): NonEmptyArray<A | B> =>
-    [head, ...tail]
+  <A>(tail: Array<A>): NonEmptyArray<A | B> => [head, ...tail]
 
 /**
  * @internal
@@ -1213,8 +1212,7 @@ export const matchRight =
  */
 export const modifyHead =
   <A>(f: Endomorphism<A>) =>
-  (as: NonEmptyArray<A>): NonEmptyArray<A> =>
-    [f(head(as)), ...tail(as)]
+  (as: NonEmptyArray<A>): NonEmptyArray<A> => [f(head(as)), ...tail(as)]
 
 /**
  * Change the head, creating a new `NonEmptyArray`.

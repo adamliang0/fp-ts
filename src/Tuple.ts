@@ -166,8 +166,8 @@ function _traverse<F>(F: Applicative<F>): <A, S, B>(ta: [A, S], f: (a: A) => HKT
  * @category mapping
  * @since 2.0.0
  */
-export const bimap: <E, G, A, B>(mapSnd: (e: E) => G, mapFst: (a: A) => B) => (fa: [A, E]) => [B, G] = (f, g) => (fa) =>
-  [g(fst(fa)), f(snd(fa))]
+export const bimap: <E, G, A, B>(mapSnd: (e: E) => G, mapFst: (a: A) => B) => (fa: [A, E]) => [B, G] =
+  (f, g) => (fa) => [g(fst(fa)), f(snd(fa))]
 
 /**
  * Map a function over the first component of a `Tuple`.

@@ -155,10 +155,8 @@ export function collect<A, B>(
  * @category conversions
  * @since 2.0.0
  */
-export const toArray: <K extends string, A>(r: Record<K, A>) => Array<[K, A]> = /*#__PURE__*/ collect(S.Ord)((k, a) => [
-  k,
-  a
-])
+export const toArray: <K extends string, A>(r: Record<K, A>) => Array<[K, A]> =
+  /*#__PURE__*/ collect(S.Ord)((k, a) => [k, a])
 
 /**
  * Unfolds a `Record` into a list of key/value pairs.
@@ -1107,9 +1105,9 @@ export const filterMap: <A, B>(f: (a: A) => Option<B>) => (fa: Record<string, A>
  * @since 2.0.0
  */
 export const partition: {
-  <A, B extends A>(refinement: Refinement<A, B>): (
-    fa: Record<string, A>
-  ) => Separated<Record<string, A>, Record<string, B>>
+  <A, B extends A>(
+    refinement: Refinement<A, B>
+  ): (fa: Record<string, A>) => Separated<Record<string, A>, Record<string, B>>
   <A>(predicate: Predicate<A>): <B extends A>(fb: Record<string, B>) => Separated<Record<string, B>, Record<string, B>>
   <A>(predicate: Predicate<A>): (fa: Record<string, A>) => Separated<Record<string, A>, Record<string, A>>
 } = RR.partition

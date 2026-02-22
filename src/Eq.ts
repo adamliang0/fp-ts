@@ -46,7 +46,9 @@ export const fromEquals = <A>(equals: Eq<A>['equals']): Eq<A> => ({
 /**
  * @since 2.10.0
  */
-export const struct = <A>(eqs: { [K in keyof A]: Eq<A[K]> }): Eq<{ readonly [K in keyof A]: A[K] }> =>
+export const struct = <A>(eqs: { [K in keyof A]: Eq<A[K]> }): Eq<{
+  readonly [K in keyof A]: A[K]
+}> =>
   fromEquals((first, second) => {
     for (const key in eqs) {
       if (!eqs[key].equals(first[key], second[key])) {
@@ -209,7 +211,9 @@ export const getTupleEq: <T extends ReadonlyArray<Eq<any>>>(
  * @since 2.0.0
  * @deprecated
  */
-export const getStructEq: <O extends ReadonlyRecord<string, any>>(eqs: { [K in keyof O]: Eq<O[K]> }) => Eq<O> = struct
+export const getStructEq: <O extends ReadonlyRecord<string, any>>(eqs: {
+  [K in keyof O]: Eq<O[K]>
+}) => Eq<O> = struct
 
 /**
  * Use [`eqStrict`](#eqstrict) instead

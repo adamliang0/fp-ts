@@ -261,14 +261,13 @@ export const orElseW: <E1, R1, E2, B>(
  * @since 2.15.0
  */
 export const tapError: {
-  <E1, R2, E2, _>(onLeft: (e: E1) => ReaderEither<R2, E2, _>): <R1, A>(
-    self: ReaderEither<R1, E1, A>
-  ) => ReaderEither<R1 & R2, E1 | E2, A>
-  <R1, E1, A, R2, E2, _>(self: ReaderEither<R1, E1, A>, onLeft: (e: E1) => ReaderEither<R2, E2, _>): ReaderEither<
-    R1 & R2,
-    E1 | E2,
-    A
-  >
+  <E1, R2, E2, _>(
+    onLeft: (e: E1) => ReaderEither<R2, E2, _>
+  ): <R1, A>(self: ReaderEither<R1, E1, A>) => ReaderEither<R1 & R2, E1 | E2, A>
+  <R1, E1, A, R2, E2, _>(
+    self: ReaderEither<R1, E1, A>,
+    onLeft: (e: E1) => ReaderEither<R2, E2, _>
+  ): ReaderEither<R1 & R2, E1 | E2, A>
 } = /*#__PURE__*/ dual(2, ET.tapError(R.Monad))
 
 /**
@@ -398,14 +397,13 @@ export const of: <R = unknown, E = never, A = never>(a: A) => ReaderEither<R, E,
  * @since 2.14.0
  */
 export const flatMap: {
-  <A, R2, E2, B>(f: (a: A) => ReaderEither<R2, E2, B>): <R1, E1>(
-    ma: ReaderEither<R1, E1, A>
-  ) => ReaderEither<R1 & R2, E1 | E2, B>
-  <R1, E1, A, R2, E2, B>(ma: ReaderEither<R1, E1, A>, f: (a: A) => ReaderEither<R2, E2, B>): ReaderEither<
-    R1 & R2,
-    E1 | E2,
-    B
-  >
+  <A, R2, E2, B>(
+    f: (a: A) => ReaderEither<R2, E2, B>
+  ): <R1, E1>(ma: ReaderEither<R1, E1, A>) => ReaderEither<R1 & R2, E1 | E2, B>
+  <R1, E1, A, R2, E2, B>(
+    ma: ReaderEither<R1, E1, A>,
+    f: (a: A) => ReaderEither<R2, E2, B>
+  ): ReaderEither<R1 & R2, E1 | E2, B>
 } = /*#__PURE__*/ dual(2, ET.flatMap(R.Monad))
 
 /**
@@ -698,14 +696,13 @@ export const FromReader: FromReader3<URI> = {
  * @since 2.15.0
  */
 export const tap: {
-  <R1, E1, A, R2, E2, _>(self: ReaderEither<R1, E1, A>, f: (a: A) => ReaderEither<R2, E2, _>): ReaderEither<
-    R1 & R2,
-    E1 | E2,
-    A
-  >
-  <A, R2, E2, _>(f: (a: A) => ReaderEither<R2, E2, _>): <R1, E1>(
-    self: ReaderEither<R1, E1, A>
-  ) => ReaderEither<R1 & R2, E2 | E1, A>
+  <R1, E1, A, R2, E2, _>(
+    self: ReaderEither<R1, E1, A>,
+    f: (a: A) => ReaderEither<R2, E2, _>
+  ): ReaderEither<R1 & R2, E1 | E2, A>
+  <A, R2, E2, _>(
+    f: (a: A) => ReaderEither<R2, E2, _>
+  ): <R1, E1>(self: ReaderEither<R1, E1, A>) => ReaderEither<R1 & R2, E2 | E1, A>
 } = /*#__PURE__*/ dual(2, chainable.tap(Chain))
 
 /**
@@ -914,9 +911,10 @@ const _FlatMap: _.FlatMap<ReaderEitherTypeLambda> = {
  * @since 2.15.0
  */
 export const flatMapNullable: {
-  <A, B, E2>(f: (a: A) => B | null | undefined, onNullable: (a: A) => E2): <R, E1>(
-    self: ReaderEither<R, E1, A>
-  ) => ReaderEither<R, E2 | E1, NonNullable<B>>
+  <A, B, E2>(
+    f: (a: A) => B | null | undefined,
+    onNullable: (a: A) => E2
+  ): <R, E1>(self: ReaderEither<R, E1, A>) => ReaderEither<R, E2 | E1, NonNullable<B>>
   <R, E1, A, B, E2>(
     self: ReaderEither<R, E1, A>,
     f: (a: A) => B | null | undefined,
@@ -929,14 +927,15 @@ export const flatMapNullable: {
  * @since 2.15.0
  */
 export const flatMapOption: {
-  <A, B, E2>(f: (a: A) => Option<B>, onNone: (a: A) => E2): <R, E1>(
-    self: ReaderEither<R, E1, A>
-  ) => ReaderEither<R, E2 | E1, B>
-  <R, E1, A, B, E2>(self: ReaderEither<R, E1, A>, f: (a: A) => Option<B>, onNone: (a: A) => E2): ReaderEither<
-    R,
-    E1 | E2,
-    B
-  >
+  <A, B, E2>(
+    f: (a: A) => Option<B>,
+    onNone: (a: A) => E2
+  ): <R, E1>(self: ReaderEither<R, E1, A>) => ReaderEither<R, E2 | E1, B>
+  <R, E1, A, B, E2>(
+    self: ReaderEither<R, E1, A>,
+    f: (a: A) => Option<B>,
+    onNone: (a: A) => E2
+  ): ReaderEither<R, E1 | E2, B>
 } = /*#__PURE__*/ _.flatMapOption(_FromEither, _FlatMap)
 
 /**
@@ -1040,12 +1039,14 @@ export const fromPredicate: {
  * @since 2.0.0
  */
 export const filterOrElse: {
-  <E, A, B extends A>(refinement: Refinement<A, B>, onFalse: (a: A) => E): <R>(
-    ma: ReaderEither<R, E, A>
-  ) => ReaderEither<R, E, B>
-  <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <R, B extends A>(
-    mb: ReaderEither<R, E, B>
-  ) => ReaderEither<R, E, B>
+  <E, A, B extends A>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E
+  ): <R>(ma: ReaderEither<R, E, A>) => ReaderEither<R, E, B>
+  <E, A>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E
+  ): <R, B extends A>(mb: ReaderEither<R, E, B>) => ReaderEither<R, E, B>
   <E, A>(predicate: Predicate<A>, onFalse: (a: A) => E): <R>(ma: ReaderEither<R, E, A>) => ReaderEither<R, E, A>
 } = /*#__PURE__*/ filterOrElse_(FromEither, Chain)
 
@@ -1058,15 +1059,18 @@ export const filterOrElse: {
  * @since 2.9.0
  */
 export const filterOrElseW: {
-  <A, B extends A, E2>(refinement: Refinement<A, B>, onFalse: (a: A) => E2): <R, E1>(
-    ma: ReaderEither<R, E1, A>
-  ) => ReaderEither<R, E1 | E2, B>
-  <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <R, E1, B extends A>(
-    mb: ReaderEither<R, E1, B>
-  ) => ReaderEither<R, E1 | E2, B>
-  <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <R, E1>(
-    ma: ReaderEither<R, E1, A>
-  ) => ReaderEither<R, E1 | E2, A>
+  <A, B extends A, E2>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E2
+  ): <R, E1>(ma: ReaderEither<R, E1, A>) => ReaderEither<R, E1 | E2, B>
+  <A, E2>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E2
+  ): <R, E1, B extends A>(mb: ReaderEither<R, E1, B>) => ReaderEither<R, E1 | E2, B>
+  <A, E2>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E2
+  ): <R, E1>(ma: ReaderEither<R, E1, A>) => ReaderEither<R, E1 | E2, A>
 } = filterOrElse
 
 /**

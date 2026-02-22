@@ -137,7 +137,9 @@ export const reverse = <A>(M: Monoid<A>): Monoid<A> => ({
  *
  * @since 2.10.0
  */
-export const struct = <A>(monoids: { [K in keyof A]: Monoid<A[K]> }): Monoid<{ readonly [K in keyof A]: A[K] }> => {
+export const struct = <A>(monoids: { [K in keyof A]: Monoid<A[K]> }): Monoid<{
+  readonly [K in keyof A]: A[K]
+}> => {
   const empty: A = {} as any
   for (const k in monoids) {
     if (_.has.call(monoids, k)) {
@@ -173,7 +175,7 @@ export const tuple = <A extends ReadonlyArray<unknown>>(
   ({
     concat: Se.tuple(...(monoids as any)).concat,
     empty: monoids.map((m) => m.empty)
-  } as any)
+  }) as any
 
 // -------------------------------------------------------------------------------------
 // utils
@@ -220,7 +222,9 @@ export const monoidVoid: Monoid<void> = {
  */
 export const getTupleMonoid: <T extends ReadonlyArray<Monoid<any>>>(
   ...monoids: T
-) => Monoid<{ [K in keyof T]: T[K] extends Se.Semigroup<infer A> ? A : never }> = tuple as any
+) => Monoid<{
+  [K in keyof T]: T[K] extends Se.Semigroup<infer A> ? A : never
+}> = tuple as any
 
 /**
  * Use [`struct`](#struct) instead.

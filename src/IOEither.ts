@@ -827,10 +827,8 @@ export const fromOptionK: <E>(
  */
 export const chainOptionK: <E>(
   onNone: LazyArg<E>
-) => <A, B>(f: (a: A) => Option<B>) => (ma: IOEither<E, A>) => IOEither<E, B> = /*#__PURE__*/ chainOptionK_(
-  FromEither,
-  Chain
-)
+) => <A, B>(f: (a: A) => Option<B>) => (ma: IOEither<E, A>) => IOEither<E, B> =
+  /*#__PURE__*/ chainOptionK_(FromEither, Chain)
 
 /**
  * Use `flatMapOption`.
@@ -885,13 +883,15 @@ const _FlatMap: _.FlatMap<IOEitherTypeLambda> = {
  * @since 2.15.0
  */
 export const flatMapNullable: {
-  <A, B, E2>(f: (a: A) => B | null | undefined, onNullable: (a: A) => E2): <E1>(
-    self: IOEither<E1, A>
-  ) => IOEither<E2 | E1, NonNullable<B>>
-  <E1, A, B, E2>(self: IOEither<E1, A>, f: (a: A) => B | null | undefined, onNullable: (a: A) => E2): IOEither<
-    E1 | E2,
-    NonNullable<B>
-  >
+  <A, B, E2>(
+    f: (a: A) => B | null | undefined,
+    onNullable: (a: A) => E2
+  ): <E1>(self: IOEither<E1, A>) => IOEither<E2 | E1, NonNullable<B>>
+  <E1, A, B, E2>(
+    self: IOEither<E1, A>,
+    f: (a: A) => B | null | undefined,
+    onNullable: (a: A) => E2
+  ): IOEither<E1 | E2, NonNullable<B>>
 } = /*#__PURE__*/ _.flatMapNullable(_FromEither, _FlatMap)
 
 /**
@@ -997,12 +997,14 @@ export const filterOrElse: {
  * @since 2.9.0
  */
 export const filterOrElseW: {
-  <A, B extends A, E2>(refinement: Refinement<A, B>, onFalse: (a: A) => E2): <E1>(
-    ma: IOEither<E1, A>
-  ) => IOEither<E1 | E2, B>
-  <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <E1, B extends A>(
-    mb: IOEither<E1, B>
-  ) => IOEither<E1 | E2, B>
+  <A, B extends A, E2>(
+    refinement: Refinement<A, B>,
+    onFalse: (a: A) => E2
+  ): <E1>(ma: IOEither<E1, A>) => IOEither<E1 | E2, B>
+  <A, E2>(
+    predicate: Predicate<A>,
+    onFalse: (a: A) => E2
+  ): <E1, B extends A>(mb: IOEither<E1, B>) => IOEither<E1 | E2, B>
   <A, E2>(predicate: Predicate<A>, onFalse: (a: A) => E2): <E1>(ma: IOEither<E1, A>) => IOEither<E1 | E2, A>
 } = filterOrElse
 

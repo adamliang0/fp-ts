@@ -185,7 +185,7 @@ export function bindTo<F>(
 export function bindTo<F>(
   F: Functor<F>
 ): <N extends string>(name: N) => <A>(fa: HKT<F, A>) => HKT<F, { readonly [K in N]: A }> {
-  return (name) => (fa) => F.map(fa, (a) => ({ [name]: a } as any))
+  return (name) => (fa) => F.map(fa, (a) => ({ [name]: a }) as any)
 }
 
 /**
