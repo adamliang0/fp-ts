@@ -12,6 +12,7 @@ import * as Se from '../src/Semigroup'
 import { separated } from '../src/Separated'
 import * as S from '../src/string'
 import * as T from '../src/Task'
+
 import * as U from './util'
 
 const p = (n: number) => n > 2
@@ -21,7 +22,10 @@ const noPrototype = Object.create(null)
 describe('Record', () => {
   describe('pipeables', () => {
     it('collect', () => {
-      const x: { readonly a: string; readonly b: boolean } = { a: 'c', b: false }
+      const x: { readonly a: string; readonly b: boolean } = {
+        a: 'c',
+        b: false
+      }
       U.deepStrictEqual(_.collect(S.Ord)((key, val) => ({ key: key, value: val }))(x), [
         { key: 'a', value: 'c' },
         { key: 'b', value: false }
@@ -33,13 +37,19 @@ describe('Record', () => {
     })
 
     it('map', () => {
-      U.deepStrictEqual(pipe({ k1: 1, k2: 2 }, _.map(U.double)), { k1: 2, k2: 4 })
+      U.deepStrictEqual(pipe({ k1: 1, k2: 2 }, _.map(U.double)), {
+        k1: 2,
+        k2: 4
+      })
       U.deepStrictEqual(pipe({ a: 1, b: 2 }, _.map(U.double)), { a: 2, b: 4 })
     })
 
     it('mapWithIndex', () => {
       const doubleWithIndex = (_: string, n: number): number => n * 2
-      U.deepStrictEqual(pipe({ a: 1, b: 2 }, _.mapWithIndex(doubleWithIndex)), { a: 2, b: 4 })
+      U.deepStrictEqual(pipe({ a: 1, b: 2 }, _.mapWithIndex(doubleWithIndex)), {
+        a: 2,
+        b: 4
+      })
     })
 
     it('reduce', () => {
@@ -89,7 +99,9 @@ describe('Record', () => {
     })
 
     it('compact', () => {
-      U.deepStrictEqual(_.compact({ foo: O.none, bar: O.some(123) }), { bar: 123 })
+      U.deepStrictEqual(_.compact({ foo: O.none, bar: O.some(123) }), {
+        bar: 123
+      })
     })
 
     it('separate', () => {

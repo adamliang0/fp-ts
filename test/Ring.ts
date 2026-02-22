@@ -1,5 +1,6 @@
 import * as N from '../src/number'
 import * as _ from '../src/Ring'
+
 import * as U from './util'
 
 describe('Ring', () => {

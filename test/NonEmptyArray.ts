@@ -6,6 +6,7 @@ import * as _ from '../src/NonEmptyArray'
 import * as N from '../src/number'
 import * as O from '../src/Option'
 import * as S from '../src/string'
+
 import * as U from './util'
 
 describe('NonEmptyArray', () => {

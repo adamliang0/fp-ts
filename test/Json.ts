@@ -1,6 +1,7 @@
 import * as E from '../src/Either'
 import { pipe } from '../src/function'
 import * as _ from '../src/Json'
+
 import * as U from './util'
 
 describe('Json', () => {

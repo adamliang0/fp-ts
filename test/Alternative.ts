@@ -3,6 +3,7 @@ import * as M from '../src/Monoid'
 import * as NEA from '../src/NonEmptyArray'
 import * as O from '../src/Option'
 import * as S from '../src/Semigroup'
+
 import * as U from './util'
 
 describe('Alternative', () => {

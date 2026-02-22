@@ -1,5 +1,6 @@
 import { pipe } from '../src/function'
 import * as _ from '../src/Predicate'
+
 import * as U from './util'
 
 const isPositive: _.Predicate<number> = (n) => n > 0

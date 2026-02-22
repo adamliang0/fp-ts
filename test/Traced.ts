@@ -2,6 +2,7 @@ import * as B from '../src/boolean'
 import { pipe } from '../src/function'
 import { Monoid, struct } from '../src/Monoid'
 import * as _ from '../src/Traced'
+
 import * as U from './util'
 
 // Adapted from https://chshersh.github.io/posts/2019-03-25-comonadic-builders
@@ -75,7 +76,13 @@ describe('Traced', () => {
   })
 
   it('tracks', () => {
-    const travisB = _.tracks(M, (project: Project): Settings => ({ ...M.empty, settingsTravis: project.projectGitHub }))
+    const travisB = _.tracks(
+      M,
+      (project: Project): Settings => ({
+        ...M.empty,
+        settingsTravis: project.projectGitHub
+      })
+    )
     U.deepStrictEqual(C.extract(C.extend(buildProject('travis'), travisB)), {
       projectName: 'travis',
       projectHasLibrary: false,

@@ -2,6 +2,7 @@ import * as B from '../src/boolean'
 import * as N from '../src/number'
 import * as _ from '../src/Semigroup'
 import * as S from '../src/string'
+
 import * as U from './util'
 
 describe('Semigroup', () => {

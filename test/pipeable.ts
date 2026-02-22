@@ -10,6 +10,7 @@ import { pipeable } from '../src/pipeable'
 import * as R from '../src/Reader'
 import * as RA from '../src/ReadonlyArray'
 import { separated } from '../src/Separated'
+
 import * as U from './util'
 
 describe('pipeable', () => {

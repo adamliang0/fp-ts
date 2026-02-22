@@ -2,6 +2,7 @@ import * as E from '../src/Either'
 import * as IO from '../src/IO'
 import { semigroupString } from '../src/Semigroup'
 import * as _ from '../src/ValidationT'
+
 import * as U from './util'
 
 describe('ValidationT', () => {

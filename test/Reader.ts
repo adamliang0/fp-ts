@@ -4,6 +4,7 @@ import * as _ from '../src/Reader'
 import * as RA from '../src/ReadonlyArray'
 import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import * as S from '../src/string'
+
 import * as U from './util'
 
 interface Env {
@@ -157,7 +158,10 @@ describe('Reader', () => {
   })
 
   it('apS', () => {
-    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(undefined), { a: 1, b: 'b' })
+    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(undefined), {
+      a: 1,
+      b: 'b'
+    })
   })
 
   describe('array utils', () => {

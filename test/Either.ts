@@ -8,6 +8,7 @@ import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import { separated } from '../src/Separated'
 import * as S from '../src/string'
 import * as T from '../src/Task'
+
 import * as U from './util'
 
 describe('Either', () => {

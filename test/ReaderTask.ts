@@ -9,6 +9,7 @@ import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import { semigroupString } from '../src/Semigroup'
 import * as S from '../src/string'
 import * as T from '../src/Task'
+
 import * as U from './util'
 
 describe('ReaderTask', () => {
@@ -225,7 +226,10 @@ describe('ReaderTask', () => {
   })
 
   it('apS', async () => {
-    U.deepStrictEqual(await pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(undefined)(), { a: 1, b: 'b' })
+    U.deepStrictEqual(await pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(undefined)(), {
+      a: 1,
+      b: 'b'
+    })
   })
 
   describe('array utils', () => {

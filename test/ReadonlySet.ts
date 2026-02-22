@@ -9,6 +9,7 @@ import { none, some as optionSome } from '../src/Option'
 import * as _ from '../src/ReadonlySet'
 import { separated } from '../src/Separated'
 import * as S from '../src/string'
+
 import * as U from './util'
 
 const gte2 = (n: number) => n >= 2

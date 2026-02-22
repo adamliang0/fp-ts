@@ -1,5 +1,6 @@
 import { getMinMaxBoundedDistributiveLattice } from '../src/BoundedDistributiveLattice'
 import * as N from '../src/number'
+
 import * as U from './util'
 
 describe('BoundedDistributiveLattice', () => {

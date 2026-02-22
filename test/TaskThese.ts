@@ -7,6 +7,7 @@ import * as S from '../src/string'
 import * as T from '../src/Task'
 import * as _ from '../src/TaskThese'
 import * as TH from '../src/These'
+
 import * as U from './util'
 
 describe('TaskThese', () => {

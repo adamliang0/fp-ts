@@ -4,6 +4,7 @@ import * as _ from '../src/IO'
 import * as N from '../src/number'
 import * as RA from '../src/ReadonlyArray'
 import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
+
 import * as U from './util'
 
 describe('IO', () => {
@@ -92,7 +93,10 @@ describe('IO', () => {
   })
 
   it('apS', () => {
-    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(), { a: 1, b: 'b' })
+    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(), {
+      a: 1,
+      b: 'b'
+    })
   })
 
   describe('array utils', () => {

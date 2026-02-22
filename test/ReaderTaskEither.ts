@@ -16,6 +16,7 @@ import { left, right } from '../src/Separated'
 import * as S from '../src/string'
 import * as T from '../src/Task'
 import * as TE from '../src/TaskEither'
+
 import * as U from './util'
 
 describe('ReaderTaskEither', () => {

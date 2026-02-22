@@ -10,6 +10,7 @@ import * as Ord from '../src/Ord'
 import * as _ from '../src/ReadonlyNonEmptyArray'
 import * as Se from '../src/Semigroup'
 import * as S from '../src/string'
+
 import * as U from './util'
 
 describe('ReadonlyNonEmptyArray', () => {

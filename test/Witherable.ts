@@ -5,6 +5,7 @@ import * as RR from '../src/ReadonlyRecord'
 import * as S from '../src/string'
 import * as T from '../src/Task'
 import * as _ from '../src/Witherable'
+
 import * as U from './util'
 
 describe('Witherable', () => {
@@ -21,7 +22,9 @@ describe('Witherable', () => {
     it('Applicative2', async () => {
       const f = (n: number) => RT.of(n % 2 === 0)
       U.deepStrictEqual(await pipe([1, 2], filterERA(RT.ApplicativePar)(f))({})(), [2])
-      U.deepStrictEqual(await pipe({ a: 1, b: 2 }, filterERR(RT.ApplicativePar)(f))({})(), { b: 2 })
+      U.deepStrictEqual(await pipe({ a: 1, b: 2 }, filterERR(RT.ApplicativePar)(f))({})(), {
+        b: 2
+      })
     })
   })
 })

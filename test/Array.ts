@@ -1,5 +1,6 @@
-import * as fc from 'fast-check'
 import { isDeepStrictEqual } from 'util'
+
+import * as fc from 'fast-check'
 
 import * as _ from '../src/Array'
 import * as B from '../src/boolean'
@@ -15,6 +16,7 @@ import { Refinement } from '../src/Refinement'
 import { separated } from '../src/Separated'
 import * as S from '../src/string'
 import * as T from '../src/Task'
+
 import * as U from './util'
 
 /* tslint:disable:readonly-array */

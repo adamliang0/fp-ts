@@ -1,4 +1,5 @@
 import * as _ from '../src/Endomorphism'
+
 import * as U from './util'
 
 describe('Endomorphism', () => {

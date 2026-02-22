@@ -3,6 +3,7 @@ import { increment } from '../src/function'
 import * as _ from '../src/Monoid'
 import * as N from '../src/number'
 import * as S from '../src/string'
+
 import * as U from './util'
 
 describe('Monoid', () => {

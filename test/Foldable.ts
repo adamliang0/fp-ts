@@ -5,6 +5,7 @@ import * as O from '../src/Option'
 import * as RA from '../src/ReadonlyArray'
 import * as S from '../src/string'
 import * as T from '../src/Tree'
+
 import * as U from './util'
 
 export const ArrayOptionURI = 'ArrayOption'

@@ -5,6 +5,7 @@ import * as O from '../src/Option'
 import * as RA from '../src/ReadonlyArray'
 import * as S from '../src/string'
 import * as _ from '../src/These'
+
 import * as U from './util'
 
 describe('These', () => {

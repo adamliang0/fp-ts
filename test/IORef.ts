@@ -1,6 +1,7 @@
 import { pipe } from '../src/function'
 import * as I from '../src/IO'
 import { IORef, newIORef } from '../src/IORef'
+
 import * as U from './util'
 
 describe('IORef', () => {

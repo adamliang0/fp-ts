@@ -1,4 +1,5 @@
 import { error, info, log, warn } from '../src/Console'
+
 import * as U from './util'
 
 describe('Console', () => {

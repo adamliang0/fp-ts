@@ -1,4 +1,5 @@
 import * as _ from '../src/number'
+
 import * as U from './util'
 
 describe('string', () => {

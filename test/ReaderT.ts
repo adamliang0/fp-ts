@@ -2,6 +2,7 @@ import * as E from '../src/Either'
 import * as IO from '../src/IO'
 import * as _ from '../src/ReaderT'
 import * as TE from '../src/TaskEither'
+
 import * as U from './util'
 
 describe('ReaderT', () => {

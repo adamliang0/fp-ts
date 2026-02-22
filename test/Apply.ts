@@ -3,6 +3,7 @@ import * as E from '../src/Either'
 import { pipe } from '../src/function'
 import * as O from '../src/Option'
 import * as RA from '../src/ReadonlyArray'
+
 import * as U from './util'
 
 describe('Apply', () => {
@@ -57,15 +58,33 @@ describe('Apply', () => {
     U.deepStrictEqual(adoOption({ a: O.some(1), b: O.some('a') }), O.some({ a: 1, b: 'a' }))
     U.deepStrictEqual(adoOption({ a: O.some(1), b: O.some('a'), c: O.some(true) }), O.some({ a: 1, b: 'a', c: true }))
     U.deepStrictEqual(
-      adoOption({ a: O.some(1), b: O.some('a'), c: O.some(true), d: O.some(2) }),
+      adoOption({
+        a: O.some(1),
+        b: O.some('a'),
+        c: O.some(true),
+        d: O.some(2)
+      }),
       O.some({ a: 1, b: 'a', c: true, d: 2 })
     )
     U.deepStrictEqual(
-      adoOption({ a: O.some(1), b: O.some('a'), c: O.some(true), d: O.some(2), e: O.some('b') }),
+      adoOption({
+        a: O.some(1),
+        b: O.some('a'),
+        c: O.some(true),
+        d: O.some(2),
+        e: O.some('b')
+      }),
       O.some({ a: 1, b: 'a', c: true, d: 2, e: 'b' })
     )
     U.deepStrictEqual(
-      adoOption({ a: O.some(1), b: O.some('a'), c: O.some(true), d: O.some(2), e: O.some('b'), f: O.some(false) }),
+      adoOption({
+        a: O.some(1),
+        b: O.some('a'),
+        c: O.some(true),
+        d: O.some(2),
+        e: O.some('b'),
+        f: O.some(false)
+      }),
       O.some({ a: 1, b: 'a', c: true, d: 2, e: 'b', f: false })
     )
     U.deepStrictEqual(adoOption({ a: O.some(1), b: O.none }), O.none)

@@ -7,6 +7,7 @@ import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import * as T from '../src/Task'
 import * as TE from '../src/TaskEither'
 import * as _ from '../src/TaskOption'
+
 import * as U from './util'
 
 describe('TaskOption', () => {

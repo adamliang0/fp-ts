@@ -2,6 +2,7 @@ import { pipe, tuple } from '../src/function'
 import * as RA from '../src/ReadonlyArray'
 import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import * as _ from '../src/State'
+
 import * as U from './util'
 
 describe('State', () => {
@@ -115,8 +116,7 @@ describe('State', () => {
     it('sequenceArray', () => {
       const append =
         (n: number): _.State<ReadonlyArray<number>, number> =>
-        (s) =>
-          [n, [...s, n]]
+        (s) => [n, [...s, n]]
       U.deepStrictEqual(pipe([append(1), append(2)], _.sequenceArray)([]), [
         [1, 2],
         [1, 2]

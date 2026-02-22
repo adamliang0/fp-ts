@@ -1,5 +1,6 @@
 import { pipe } from '../src/function'
 import * as _ from '../src/struct'
+
 import * as U from './util'
 
 describe('struct', () => {

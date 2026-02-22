@@ -1,6 +1,7 @@
 import * as assert from 'assert'
-import * as fc from 'fast-check'
 import { isDeepStrictEqual } from 'util'
+
+import * as fc from 'fast-check'
 
 import * as B from '../src/boolean'
 import * as E from '../src/Either'
@@ -16,6 +17,7 @@ import { Refinement } from '../src/Refinement'
 import { separated } from '../src/Separated'
 import * as S from '../src/string'
 import * as T from '../src/Task'
+
 import * as U from './util'
 
 describe('ReadonlyArray', () => {

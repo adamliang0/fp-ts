@@ -12,6 +12,7 @@ import * as Se from '../src/Semigroup'
 import { separated } from '../src/Separated'
 import * as S from '../src/string'
 import * as T from '../src/Task'
+
 import * as U from './util'
 
 const p = (n: number) => n > 2
@@ -21,7 +22,10 @@ const noPrototype = Object.create(null)
 describe('ReadonlyRecord', () => {
   describe('pipeables', () => {
     it('collect', () => {
-      const x: { readonly a: string; readonly b: boolean } = { a: 'c', b: false }
+      const x: { readonly a: string; readonly b: boolean } = {
+        a: 'c',
+        b: false
+      }
       U.deepStrictEqual(_.collect(S.Ord)((key, val) => ({ key: key, value: val }))(x), [
         { key: 'a', value: 'c' },
         { key: 'b', value: false }
@@ -33,7 +37,10 @@ describe('ReadonlyRecord', () => {
     })
 
     it('map', () => {
-      U.deepStrictEqual(pipe({ k1: 1, k2: 2 }, _.map(U.double)), { k1: 2, k2: 4 })
+      U.deepStrictEqual(pipe({ k1: 1, k2: 2 }, _.map(U.double)), {
+        k1: 2,
+        k2: 4
+      })
       U.deepStrictEqual(pipe({ a: 1, b: 2 }, _.map(U.double)), { a: 2, b: 4 })
       U.deepStrictEqual(_.Functor.map({ a: 1, b: 2 }, U.double), { a: 2, b: 4 })
     })
@@ -84,9 +91,13 @@ describe('ReadonlyRecord', () => {
     })
 
     it('compact', () => {
-      U.deepStrictEqual(_.compact({ foo: O.none, bar: O.some(123) }), { bar: 123 })
+      U.deepStrictEqual(_.compact({ foo: O.none, bar: O.some(123) }), {
+        bar: 123
+      })
       // should ignore non own properties
-      const o: _.ReadonlyRecord<string, O.Option<number>> = Object.create({ a: 1 })
+      const o: _.ReadonlyRecord<string, O.Option<number>> = Object.create({
+        a: 1
+      })
       U.deepStrictEqual(pipe(o, _.compact), {})
     })
 
@@ -272,7 +283,10 @@ describe('ReadonlyRecord', () => {
       U.deepStrictEqual(sequence({ a: O.none, b: O.some(2) }), O.none)
 
       U.deepStrictEqual(
-        _.readonlyRecord.sequence(O.Applicative)({ a: O.some(1), b: O.some(2) }),
+        _.readonlyRecord.sequence(O.Applicative)({
+          a: O.some(1),
+          b: O.some(2)
+        }),
         O.some({ a: 1, b: 2 })
       )
     })

@@ -6,6 +6,7 @@ import * as _ from '../src/Ord'
 import { sort } from '../src/ReadonlyArray'
 import * as RR from '../src/ReadonlyRecord'
 import * as S from '../src/string'
+
 import * as U from './util'
 
 describe('Ord', () => {

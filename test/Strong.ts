@@ -1,5 +1,6 @@
 import * as R from '../src/Reader'
 import { fanout, splitStrong } from '../src/Strong'
+
 import * as U from './util'
 
 describe('Strong', () => {

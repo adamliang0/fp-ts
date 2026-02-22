@@ -4,6 +4,7 @@ import * as _ from '../src/Identity'
 import * as N from '../src/number'
 import * as O from '../src/Option'
 import * as S from '../src/string'
+
 import * as U from './util'
 
 describe('Identity', () => {
@@ -142,6 +143,9 @@ describe('Identity', () => {
   })
 
   it('apS', () => {
-    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b'))), { a: 1, b: 'b' })
+    U.deepStrictEqual(pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b'))), {
+      a: 1,
+      b: 'b'
+    })
   })
 })

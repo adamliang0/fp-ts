@@ -6,6 +6,7 @@ import * as RA from '../src/ReadonlyArray'
 import * as RNEA from '../src/ReadonlyNonEmptyArray'
 import * as S from '../src/string'
 import * as _ from '../src/Task'
+
 import * as U from './util'
 
 const delayReject =
@@ -204,7 +205,10 @@ describe('Task', () => {
   })
 
   it('apS', async () => {
-    U.deepStrictEqual(await pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(), { a: 1, b: 'b' })
+    U.deepStrictEqual(await pipe(_.of(1), _.bindTo('a'), _.apS('b', _.of('b')))(), {
+      a: 1,
+      b: 'b'
+    })
   })
 
   describe('array utils', () => {

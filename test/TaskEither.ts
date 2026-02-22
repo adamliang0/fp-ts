@@ -14,6 +14,7 @@ import * as S from '../src/string'
 import * as T from '../src/Task'
 import * as _ from '../src/TaskEither'
 import * as TO from '../src/TaskOption'
+
 import * as U from './util'
 
 describe('TaskEither', () => {

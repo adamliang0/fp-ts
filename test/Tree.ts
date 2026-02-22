@@ -5,6 +5,7 @@ import * as O from '../src/Option'
 import * as S from '../src/string'
 import * as T from '../src/Task'
 import * as _ from '../src/Tree'
+
 import * as U from './util'
 
 describe('Tree', () => {

@@ -6,6 +6,7 @@ import * as _ from '../src/IOOption'
 import * as O from '../src/Option'
 import * as RA from '../src/ReadonlyArray'
 import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
+
 import * as U from './util'
 
 describe('IOOption', () => {

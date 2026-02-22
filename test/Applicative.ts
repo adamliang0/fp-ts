@@ -2,6 +2,7 @@ import { getApplicativeComposition } from '../src/Applicative'
 import { increment } from '../src/function'
 import * as O from '../src/Option'
 import * as RA from '../src/ReadonlyArray'
+
 import * as U from './util'
 
 describe('Applicative', () => {

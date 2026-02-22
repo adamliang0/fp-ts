@@ -5,6 +5,7 @@ import * as _ from '../src/function'
 import { concatAll } from '../src/Monoid'
 import * as N from '../src/number'
 import * as RA from '../src/ReadonlyArray'
+
 import * as U from './util'
 
 const f = (n: number) => n + 1

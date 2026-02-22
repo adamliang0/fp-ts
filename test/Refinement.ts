@@ -6,6 +6,7 @@ import * as O from '../src/Option'
 import { ReadonlyRecord } from '../src/ReadonlyRecord'
 import * as _ from '../src/Refinement'
 import * as S from '../src/string'
+
 import * as U from './util'
 
 interface NonEmptyStringBrand {

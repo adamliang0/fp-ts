@@ -1,4 +1,5 @@
 import * as _ from '../src/Random'
+
 import * as U from './util'
 
 describe('Random', () => {

@@ -9,6 +9,7 @@ import * as RA from '../src/ReadonlyArray'
 import { ReadonlyNonEmptyArray } from '../src/ReadonlyNonEmptyArray'
 import { left, right } from '../src/Separated'
 import * as S from '../src/string'
+
 import * as U from './util'
 
 describe('ReaderEither', () => {
