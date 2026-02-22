@@ -2,9 +2,19 @@
   "name": "fp-ts",
   "version": "2.16.11",
   "description": "Functional programming in TypeScript",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.mjs",
+  "files": [
+    "dist/**"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "typings": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
   "sideEffects": false,
   "scripts": {
     "lint": "oxlint \"src/**/*.ts\" \"test/**/*.ts\" \"scripts/**/*.ts\"",
@@ -14,9 +24,8 @@
     "test": "bun run lint && bun run fmt && bun run dtslint && bun run vitest && bun run docs",
     "clean": "bunx rimraf ./dist",
     "prebuild": "bun run clean",
-    "build": "bunx run rslib",
-    "postbuild": "oxfmt --loglevel=silent --write \"./dist/**/*.ts\"",
-    "prepublishOnly": "bun scripts/pre-publish",
+    "build": "rslib build",
+    "prepublishOnly": "bun run build && bun scripts/pre-publish",
     "mocha": "mocha -r ts-node/register test/*.ts",
     "dtslint": "dtslint dtslint",
     "docs": "docs-ts",
@@ -47,15 +56,14 @@
     "@types/node": "^25.3.0",
     "@vitest/coverage-istanbul": "^4.0.18",
     "benchmark": "2.1.4",
-    "bun": "^1.3.9",
     "docs-ts": "^0.8.0",
+    "false": "^0.0.4",
     "fast-check": "^4.5.3",
     "glob": "^13.0.6",
     "mocha": "^11.7.5",
     "oxfmt": "^0.34.0",
     "oxlint": "^1.49.0",
     "oxlint-tsgolint": "^0.14.2",
-    "rimraf": "6.1.3",
     "tslint": "6.1.3",
     "typescript": "^5.9.3",
     "vitest": "^4.0.18"
@@ -71,6 +79,7 @@
     "functional-programming"
   ],
   "trustedDependencies": [
-    "core-js"
+    "core-js",
+    "bun"
   ]
 }

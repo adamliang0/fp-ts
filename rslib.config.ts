@@ -6,22 +6,18 @@ export default defineConfig({
       format: 'esm',
       syntax: 'es6',
       dts: {
-        distPath: './dist/types',
-      },
-      output: {
-        distPath: './dist/esm',
-      },
+        distPath: "./dist/types"
+      }
     },
     {
       format: 'cjs',
       syntax: 'es5',
-      output: {
-        distPath: './dist/cjs',
-      },
     },
   ],
   output: {
     target: 'node',
+    cleanDistPath: true,
+    distPath: "./dist",
     minify: {
       jsOptions: {
         minimizerOptions: {
