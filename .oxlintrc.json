@@ -179,8 +179,16 @@
   "env": {
     "builtin": true
   },
-  "globals": {
-    "Array": "readonly",
-  },
-  "ignorePatterns": []
+  "globals": {},
+  "ignorePatterns": [],
+  "overrides": [
+    {
+      "files": [
+        "test/**/*.ts"
+      ],
+      "rules": {
+        "restrict-template-expressions": "off"
+      }
+    }
+  ]
 }
