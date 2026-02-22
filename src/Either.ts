@@ -742,7 +742,7 @@ export const bimap: <E, G, A, B>(f: (e: E) => G, g: (a: A) => B) => (fa: Either<
     isLeft(fa) ? left(f(fa.left)) : right(g(fa.right))
 
 /**
- * Map a function over the first type argument of a bifunctor.
+ * Map a function over the first type argument of a bifunctor (two-parameter type).
  *
  * @category error handling
  * @since 2.0.0
@@ -1458,7 +1458,7 @@ export const toUnion: <E, A>(fa: Either<E, A>) => E | A = /*#__PURE__*/ foldW(id
 export function toError(e: unknown): Error {
   try {
     return e instanceof Error ? e : new Error(String(e))
-  } catch (error) {
+  } catch {
     return new Error()
   }
 }
