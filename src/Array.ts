@@ -426,7 +426,7 @@ export const scanLeft =
   <A, B>(b: B, f: (b: B, a: A) => B) =>
   (as: Array<A>): NonEmptyArray<B> => {
     const len = as.length
-    const out = new Array(len + 1) as NonEmptyArray<B>
+    const out = Array.from({ length: len + 1 }) as NonEmptyArray<B>
     out[0] = b
     for (let i = 0; i < len; i++) {
       out[i + 1] = f(out[i], as[i])
@@ -448,7 +448,7 @@ export const scanRight =
   <A, B>(b: B, f: (a: A, b: B) => B) =>
   (as: Array<A>): NonEmptyArray<B> => {
     const len = as.length
-    const out = new Array(len + 1) as NonEmptyArray<B>
+    const out = Array.from({ length: len + 1 }) as NonEmptyArray<B>
     out[len] = b
     for (let i = len - 1; i >= 0; i--) {
       out[i] = f(as[i], out[i + 1])

@@ -92,4 +92,4 @@ const main: T.Task<void> = pipe(
 )
 
 // tslint:disable-next-line: no-floating-promises
-main()
+void main()
