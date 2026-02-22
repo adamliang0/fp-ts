@@ -1,9 +1,9 @@
 {
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "eslint.validate": ["typescript"],
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.oxc": "explicit"
   },
-  "files.insertFinalNewline": true
+  "files.insertFinalNewline": true,
+  "oxc.typeAware": true,
 }
