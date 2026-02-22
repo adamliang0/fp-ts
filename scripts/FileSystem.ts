@@ -1,5 +1,5 @@
 import * as fs from 'fs'
-import G from 'glob'
+import { glob as globFn } from 'glob'
 
 import { flow } from '../src/function'
 import * as TE from '../src/TaskEither'
@@ -16,7 +16,10 @@ export interface FileSystem {
 const readFile = TE.taskify<fs.PathLike, { readonly encoding: 'utf8' }, NodeJS.ErrnoException, string>(fs.readFile)
 const writeFile = TE.taskify<fs.PathLike, string, NodeJS.ErrnoException, void>(fs.writeFile)
 const copyFile = TE.taskify<fs.PathLike, fs.PathLike, NodeJS.ErrnoException, void>(fs.copyFile)
-const glob = TE.taskify<string, Error, ReadonlyArray<string>>(G)
+const glob: FileSystem['glob'] = TE.tryCatchK(
+  (pattern: string) => globFn(pattern),
+  (e) => (e instanceof Error ? e : new Error(String(e)))
+)
 const mkdirTE = TE.taskify(fs.mkdir)
 const moveFile = TE.taskify<fs.PathLike, fs.PathLike, NodeJS.ErrnoException, void>(fs.rename)
 
