@@ -1,5 +1,6 @@
-import * as glob from 'glob'
 import * as path from 'path'
+
+import * as glob from 'glob'
 import * as ast from 'ts-morph'
 
 import { pipe } from '../src/function'
@@ -205,10 +206,17 @@ export function parseType(
     }
   }
   if (ast.ts.isIndexedAccessTypeNode(node)) {
-    return { _tag: 'IndexedAccessType', objectType: parseType(node.objectType), indexType: parseType(node.indexType) }
+    return {
+      _tag: 'IndexedAccessType',
+      objectType: parseType(node.objectType),
+      indexType: parseType(node.indexType)
+    }
   }
   if (ast.ts.isTupleTypeNode(node)) {
-    return { _tag: 'TupleType', elements: pipe(node.elements, RA.map(parseType)) }
+    return {
+      _tag: 'TupleType',
+      elements: pipe(node.elements, RA.map(parseType))
+    }
   }
   if (ast.ts.isRestTypeNode(node)) {
     return { _tag: 'RestType', type: parseType(node.type) }
@@ -231,7 +239,10 @@ export function parseType(
     return parseType(node.type)
   }
   if (ast.ts.isIntersectionTypeNode(node)) {
-    return { _tag: 'IntersectionType', members: pipe(node.types, RA.map(parseType)) }
+    return {
+      _tag: 'IntersectionType',
+      members: pipe(node.types, RA.map(parseType))
+    }
   }
   if (ast.ts.isParenthesizedTypeNode(node)) {
     return parseType(node.type)
@@ -303,9 +314,15 @@ export const parseInterface = (i: ast.InterfaceDeclaration): ReadonlyArray<Funct
       const type = parseType(ps.type!)
       switch (type._tag) {
         case 'Overloadings':
-          return O.some({ name: `${name}/${ps.name.getText()}`, overloadings: type.signatures })
+          return O.some({
+            name: `${name}/${ps.name.getText()}`,
+            overloadings: type.signatures
+          })
         case 'Signature':
-          return O.some({ name: `${name}/${ps.name.getText()}`, overloadings: [type] })
+          return O.some({
+            name: `${name}/${ps.name.getText()}`,
+            overloadings: [type]
+          })
         case 'TypeReference':
         case 'LiteralType':
         case 'Token':

@@ -181,8 +181,7 @@ interface Test<A> extends S.State<TestData, A> {}
 
 const of =
   <A>(a: A): Test<A> =>
-  (data) =>
-    [a, data]
+  (data) => [a, data]
 
 const programTest: Program<URI> = {
   ...S.Monad,

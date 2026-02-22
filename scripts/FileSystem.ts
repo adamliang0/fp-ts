@@ -1,4 +1,5 @@
 import * as fs from 'fs'
+
 import { glob as globFn } from 'glob'
 
 import { flow } from '../src/function'
