@@ -5,16 +5,9 @@
   "files": [
     "dist/**"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.mjs",
   "typings": "dist/types/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/types/index.d.ts"
-    }
-  },
   "sideEffects": false,
   "scripts": {
     "lint": "oxlint \"src/**/*.ts\" \"test/**/*.ts\" \"scripts/**/*.ts\"",
