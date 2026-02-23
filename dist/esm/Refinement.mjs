@@ -1,0 +1,10 @@
+import { isRight, isSome } from "./internal.mjs";
+const fromOptionK = (getOption)=>(a)=>isSome(getOption(a));
+const fromEitherK = (getEither)=>(a)=>isRight(getEither(a));
+const id = ()=>(_)=>true;
+const not = (refinement)=>(a)=>!refinement(a);
+const or = (second)=>(first)=>(a)=>first(a) || second(a);
+const and = (second)=>(first)=>(a)=>first(a) && second(a);
+const zero = ()=>(_)=>false;
+const compose = (bc)=>(ab)=>(i)=>ab(i) && bc(i);
+export { and, compose, fromEitherK, fromOptionK, id, not, or, zero };

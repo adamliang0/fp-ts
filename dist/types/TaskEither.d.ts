@@ -144,11 +144,6 @@ export declare const matchEW: <E, B, A, C>(onLeft: (e: E) => Task<B>, onRight: (
  */
 export declare const foldW: <E, B, A, C>(onLeft: (e: E) => Task<B>, onRight: (a: A) => Task<C>) => (ma: TaskEither<E, A>) => Task<B | C>;
 /**
- * @category error handling
- * @since 2.0.0
- */
-export declare const getOrElse: <E, A>(onLeft: (e: E) => Task<A>) => (ma: TaskEither<E, A>) => Task<A>;
-/**
  * Less strict version of [`getOrElse`](#getorelse).
  *
  * The `W` suffix (short for **W**idening) means that the handler return type will be merged.
@@ -157,6 +152,11 @@ export declare const getOrElse: <E, A>(onLeft: (e: E) => Task<A>) => (ma: TaskEi
  * @since 2.6.0
  */
 export declare const getOrElseW: <E, B>(onLeft: (e: E) => Task<B>) => <A>(ma: TaskEither<E, A>) => Task<A | B>;
+/**
+ * @category error handling
+ * @since 2.0.0
+ */
+export declare const getOrElse: <E, A>(onLeft: (e: E) => Task<A>) => (ma: TaskEither<E, A>) => Task<A>;
 /**
  * Transforms a `Promise` that may reject to a `Promise` that never rejects and returns an `Either` instead.
  *

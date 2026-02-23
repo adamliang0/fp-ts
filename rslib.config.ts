@@ -1,4 +1,4 @@
-import { defineConfig } from '@rslib/core';
+import { defineConfig } from '@rslib/core'
 
 export default defineConfig({
   lib: [
@@ -6,32 +6,33 @@ export default defineConfig({
       format: 'esm',
       syntax: 'es6',
       dts: {
-        distPath: "./dist/types"
+        distPath: './dist/types'
+      },
+      bundle: false,
+      output: {
+        distPath: './dist/esm',
+        module: true
       }
     },
     {
       format: 'cjs',
       syntax: 'es5',
-    },
+      bundle: false,
+      output: {
+        distPath: './dist/cjs',
+        module: false
+      }
+    }
   ],
   output: {
     target: 'node',
-    cleanDistPath: true,
-    distPath: "./dist",
-    minify: {
-      jsOptions: {
-        minimizerOptions: {
-          format: {
-            comments: 'all',
-          }
-        }
-      }
-    }
+
+    cleanDistPath: true
   },
   source: {
+    tsconfigPath: './tsconfig.app.json',
     entry: {
-      index: "src/index.ts"
-    },
-    tsconfigPath: './tsconfig.app.json'
+      index: 'src'
+    }
   }
-});
+})

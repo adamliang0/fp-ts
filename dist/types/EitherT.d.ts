@@ -174,7 +174,7 @@ export declare function getOrElse<M>(M: Monad<M>): <E, A>(onLeft: (e: E) => HKT<
 /**
  * Less strict version of [`getOrElse`](#getorelse).
  *
- * @since 2.6.0
+ * @since 2.16.12
  */
 export declare function getOrElseW<M extends URIS3>(M: Monad3<M>): <E, R, ME, B>(onLeft: (e: E) => Kind3<M, R, ME, B>) => <A>(ma: Kind3<M, R, ME, Either<E, A>>) => Kind3<M, R, ME, A | B>;
 export declare function getOrElseW<M extends URIS3, ME>(M: Monad3C<M, ME>): <E, R, B>(onLeft: (e: E) => Kind3<M, R, ME, B>) => <A>(ma: Kind3<M, R, ME, Either<E, A>>) => Kind3<M, R, ME, A | B>;
