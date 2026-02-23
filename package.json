@@ -629,6 +629,7 @@
         "test": "bun run lint && bun run fmt && bun run vitest && bun run docs",
         "clean": "bunx rimraf ./dist",
         "prebuild": "bun run clean",
+        "postbuild": "bun run scripts/generateExports",
         "build": "rslib build",
         "prepublishOnly": "bun run build && bun scripts/pre-publish",
         "mocha": "mocha -r ts-node/register test/*.ts",
