@@ -210,13 +210,6 @@ export const matchEW: <E, B, A, C>(
 export const foldW = matchEW
 
 /**
- * @category error handling
- * @since 2.0.0
- */
-export const getOrElse: <E, A>(onLeft: (e: E) => Task<A>) => (ma: TaskEither<E, A>) => Task<A> =
-  /*#__PURE__*/ ET.getOrElse(T.Monad)
-
-/**
  * Less strict version of [`getOrElse`](#getorelse).
  *
  * The `W` suffix (short for **W**idening) means that the handler return type will be merged.
@@ -225,7 +218,13 @@ export const getOrElse: <E, A>(onLeft: (e: E) => Task<A>) => (ma: TaskEither<E, 
  * @since 2.6.0
  */
 export const getOrElseW: <E, B>(onLeft: (e: E) => Task<B>) => <A>(ma: TaskEither<E, A>) => Task<A | B> =
-  getOrElse as any
+  /*#__PURE__*/ ET.getOrElseW(T.Monad)
+
+/**
+ * @category error handling
+ * @since 2.0.0
+ */
+export const getOrElse: <E, A>(onLeft: (e: E) => Task<A>) => (ma: TaskEither<E, A>) => Task<A> = getOrElseW
 
 /**
  * Transforms a `Promise` that may reject to a `Promise` that never rejects and returns an `Either` instead.

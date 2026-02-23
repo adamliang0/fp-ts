@@ -623,6 +623,39 @@ export function getOrElse<M>(
   return (onLeft) => (ma) => M.chain(ma, E.match(onLeft, M.of))
 }
 
+/**
+ * Less strict version of [`getOrElse`](#getorelse).
+ *
+ * @since 2.16.12
+ */
+export function getOrElseW<M extends URIS3>(
+  M: Monad3<M>
+): <E, R, ME, B>(
+  onLeft: (e: E) => Kind3<M, R, ME, B>
+) => <A>(ma: Kind3<M, R, ME, Either<E, A>>) => Kind3<M, R, ME, A | B>
+export function getOrElseW<M extends URIS3, ME>(
+  M: Monad3C<M, ME>
+): <E, R, B>(onLeft: (e: E) => Kind3<M, R, ME, B>) => <A>(ma: Kind3<M, R, ME, Either<E, A>>) => Kind3<M, R, ME, A | B>
+export function getOrElseW<M extends URIS2>(
+  M: Monad2<M>
+): <E, ME, B>(onLeft: (e: E) => Kind2<M, ME, B>) => <A>(ma: Kind2<M, ME, Either<E, A>>) => Kind2<M, ME, A | B>
+export function getOrElseW<M extends URIS2, ME>(
+  M: Monad2C<M, ME>
+): <E, B>(onLeft: (e: E) => Kind2<M, ME, B>) => <A>(ma: Kind2<M, ME, Either<E, A>>) => Kind2<M, ME, A | B>
+export function getOrElseW<M extends URIS>(
+  M: Monad1<M>
+): <E, B>(onLeft: (e: E) => Kind<M, B>) => <A>(ma: Kind<M, Either<E, A>>) => Kind<M, A | B>
+export function getOrElseW<M>(
+  M: Monad<M>
+): <E, B>(onLeft: (e: E) => HKT<M, B>) => <A>(ma: HKT<M, Either<E, A>>) => HKT<M, A | B>
+export function getOrElseW<M>(
+  M: Monad<M>
+): <E, B>(onLeft: (e: E) => HKT<M, B>) => <A>(ma: HKT<M, Either<E, A>>) => HKT<M, A | B> {
+  return <E, B>(onLeft: (e: E) => HKT<M, B>) =>
+    <A>(ma: HKT<M, Either<E, A>>): HKT<M, A | B> =>
+      M.chain(ma, (ea) => (E.isLeft(ea) ? M.map(onLeft(ea.left), (b: B): A | B => b) : M.of(ea.right)))
+}
+
 // -------------------------------------------------------------------------------------
 // combinators
 // -------------------------------------------------------------------------------------
