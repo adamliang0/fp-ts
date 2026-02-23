@@ -26,8 +26,13 @@ export default defineConfig({
   ],
   output: {
     target: 'node',
-
+    minify: true,
     cleanDistPath: true
+  },
+  performance: {
+    chunkSplit: {
+      strategy: 'split-by-experience'
+    }
   },
   source: {
     tsconfigPath: './tsconfig.app.json',
