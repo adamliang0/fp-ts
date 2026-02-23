@@ -1,17 +1,1 @@
-import { pipe } from "./function.mjs";
-import { getFunctorComposition } from "./Functor.mjs";
-function mapWithIndex(F, G) {
-    return (f)=>(fa)=>F.mapWithIndex(fa, (i, ga)=>G.mapWithIndex(ga, (j, a)=>f([
-                        i,
-                        j
-                    ], a)));
-}
-function getFunctorWithIndexComposition(F, G) {
-    const map = getFunctorComposition(F, G).map;
-    const _mapWithIndex = mapWithIndex(F, G);
-    return {
-        map,
-        mapWithIndex: (fga, f)=>pipe(fga, _mapWithIndex(f))
-    };
-}
-export { getFunctorWithIndexComposition, mapWithIndex };
+import{pipe as t}from"./function.mjs";import{getFunctorComposition as n}from"./Functor.mjs";function o(t,n){return o=>i=>t.mapWithIndex(i,(t,i)=>n.mapWithIndex(i,(n,i)=>o([t,n],i)))}function i(i,m){let r=n(i,m).map,e=o(i,m);return{map:r,mapWithIndex:(n,o)=>t(n,e(o))}}export{i as getFunctorWithIndexComposition,o as mapWithIndex};

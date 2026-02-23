@@ -1,4 +1,1 @@
-function guard(F, P) {
-    return (b)=>b ? P.of(void 0) : F.zero();
-}
-export { guard };
+function o(o,r){return e=>e?r.of(void 0):o.zero()}export{o as guard};

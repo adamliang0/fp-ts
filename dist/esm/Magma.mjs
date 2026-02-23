@@ -1,14 +1,1 @@
-const reverse = (M)=>({
-        concat: (first, second)=>M.concat(second, first)
-    });
-const filterFirst = (predicate)=>(M)=>({
-            concat: (first, second)=>predicate(first) ? M.concat(first, second) : second
-        });
-const filterSecond = (predicate)=>(M)=>({
-            concat: (first, second)=>predicate(second) ? M.concat(first, second) : first
-        });
-const endo = (f)=>(M)=>({
-            concat: (first, second)=>M.concat(f(first), f(second))
-        });
-const concatAll = (M)=>(startWith)=>(as)=>as.reduce((a, acc)=>M.concat(a, acc), startWith);
-export { concatAll, endo, filterFirst, filterSecond, reverse };
+let c=c=>({concat:(t,o)=>c.concat(o,t)}),t=c=>t=>({concat:(o,n)=>c(o)?t.concat(o,n):n}),o=c=>t=>({concat:(o,n)=>c(n)?t.concat(o,n):o}),n=c=>t=>({concat:(o,n)=>t.concat(c(o),c(n))}),e=c=>t=>o=>o.reduce((t,o)=>c.concat(t,o),t);export{e as concatAll,n as endo,t as filterFirst,o as filterSecond,c as reverse};

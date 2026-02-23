@@ -1,18 +1,1 @@
-import { clamp, ordNumber, reverse } from "./Ord.mjs";
-const Bounded_clamp = (B)=>clamp(B)(B.bottom, B.top);
-const Bounded_reverse = (B)=>{
-    const R = reverse(B);
-    return {
-        equals: R.equals,
-        compare: R.compare,
-        top: B.bottom,
-        bottom: B.top
-    };
-};
-const boundedNumber = {
-    equals: ordNumber.equals,
-    compare: ordNumber.compare,
-    top: 1 / 0,
-    bottom: -1 / 0
-};
-export { boundedNumber, Bounded_clamp as clamp, Bounded_reverse as reverse };
+import{clamp as e,ordNumber as o,reverse as t}from"./Ord.mjs";let r=o=>e(o)(o.bottom,o.top),m=e=>{let o=t(e);return{equals:o.equals,compare:o.compare,top:e.bottom,bottom:e.top}},a={equals:o.equals,compare:o.compare,top:1/0,bottom:-1/0};export{a as boundedNumber,r as clamp,m as reverse};

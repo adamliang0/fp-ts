@@ -1,14 +1,1 @@
-import { getApplicativeComposition } from "./Applicative.mjs";
-import { getApplicativeValidation } from "./Either.mjs";
-import { isLeft, isRight, left } from "./internal.mjs";
-function getValidationM(S, M) {
-    const A = getApplicativeComposition(M, getApplicativeValidation(S));
-    return {
-        map: A.map,
-        ap: A.ap,
-        of: A.of,
-        chain: (ma, f)=>M.chain(ma, (e)=>isLeft(e) ? M.of(left(e.left)) : f(e.right)),
-        alt: (me, that)=>M.chain(me, (e1)=>isRight(e1) ? M.of(e1) : M.map(that(), (e2)=>isLeft(e2) ? left(S.concat(e1.left, e2.left)) : e2))
-    };
-}
-export { getValidationM };
+import{getApplicativeComposition as t}from"./Applicative.mjs";import{getApplicativeValidation as a}from"./Either.mjs";import{isLeft as i,isRight as o,left as m}from"./internal.mjs";function r(r,f){let p=t(f,a(r));return{map:p.map,ap:p.ap,of:p.of,chain:(t,a)=>f.chain(t,t=>i(t)?f.of(m(t.left)):a(t.right)),alt:(t,a)=>f.chain(t,t=>o(t)?f.of(t):f.map(a(),a=>i(a)?m(r.concat(t.left,a.left)):a))}}export{r as getValidationM};

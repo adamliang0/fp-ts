@@ -1,10 +1,1 @@
-import { isRight, isSome } from "./internal.mjs";
-const fromOptionK = (getOption)=>(a)=>isSome(getOption(a));
-const fromEitherK = (getEither)=>(a)=>isRight(getEither(a));
-const id = ()=>(_)=>true;
-const not = (refinement)=>(a)=>!refinement(a);
-const or = (second)=>(first)=>(a)=>first(a) || second(a);
-const and = (second)=>(first)=>(a)=>first(a) && second(a);
-const zero = ()=>(_)=>false;
-const compose = (bc)=>(ab)=>(i)=>ab(i) && bc(i);
-export { and, compose, fromEitherK, fromOptionK, id, not, or, zero };
+import{isRight as o,isSome as r}from"./internal.mjs";let t=o=>t=>r(o(t)),e=r=>t=>o(r(t)),m=()=>o=>!0,i=o=>r=>!o(r),n=o=>r=>t=>r(t)||o(t),p=o=>r=>t=>r(t)&&o(t),f=()=>o=>!1,a=o=>r=>t=>r(t)&&o(t);export{p as and,a as compose,e as fromEitherK,t as fromOptionK,m as id,i as not,n as or,f as zero};

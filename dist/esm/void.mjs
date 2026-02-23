@@ -1,7 +1,1 @@
-import { constant } from "./Semigroup.mjs";
-const Semigroup = constant(void 0);
-const Monoid = {
-    concat: Semigroup.concat,
-    empty: void 0
-};
-export { Monoid, Semigroup };
+import{constant as o}from"./Semigroup.mjs";let i=o(void 0),m={concat:i.concat,empty:void 0};export{m as Monoid,i as Semigroup};

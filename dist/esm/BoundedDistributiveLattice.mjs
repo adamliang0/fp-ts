@@ -1,11 +1,1 @@
-import { getMinMaxDistributiveLattice } from "./DistributiveLattice.mjs";
-function getMinMaxBoundedDistributiveLattice(O) {
-    const L = getMinMaxDistributiveLattice(O);
-    return (min, max)=>({
-            join: L.join,
-            meet: L.meet,
-            zero: min,
-            one: max
-        });
-}
-export { getMinMaxBoundedDistributiveLattice };
+import{getMinMaxDistributiveLattice as t}from"./DistributiveLattice.mjs";function e(e){let i=t(e);return(t,e)=>({join:i.join,meet:i.meet,zero:t,one:e})}export{e as getMinMaxBoundedDistributiveLattice};

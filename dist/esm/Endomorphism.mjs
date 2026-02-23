@@ -1,10 +1,1 @@
-import { flow, identity } from "./function.mjs";
-const URI = 'Endomorphism';
-const getSemigroup = ()=>({
-        concat: (first, second)=>flow(first, second)
-    });
-const getMonoid = ()=>({
-        concat: getSemigroup().concat,
-        empty: identity
-    });
-export { URI, getMonoid, getSemigroup };
+import{flow as o,identity as t}from"./function.mjs";let c="Endomorphism",m=()=>({concat:(t,c)=>o(t,c)}),n=()=>({concat:m().concat,empty:t});export{c as URI,n as getMonoid,m as getSemigroup};

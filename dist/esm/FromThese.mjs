@@ -1,5 +1,1 @@
-import { flow } from "./function.mjs";
-function fromTheseK(F) {
-    return (f)=>flow(f, F.fromThese);
-}
-export { fromTheseK };
+import{flow as o}from"./function.mjs";function r(r){return e=>o(e,r.fromThese)}export{r as fromTheseK};

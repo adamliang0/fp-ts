@@ -1,10 +1,1 @@
-import { has } from "./internal.mjs";
-const getAssignSemigroup = ()=>({
-        concat: (first, second)=>Object.assign({}, first, second)
-    });
-const evolve = (transformations)=>(a)=>{
-        const out = {};
-        for(const k in a)if (has.call(a, k)) out[k] = transformations[k](a[k]);
-        return out;
-    };
-export { evolve, getAssignSemigroup };
+import{has as e}from"./internal.mjs";let t=()=>({concat:(e,t)=>Object.assign({},e,t)}),r=t=>r=>{let l={};for(let n in r)e.call(r,n)&&(l[n]=t[n](r[n]));return l};export{r as evolve,t as getAssignSemigroup};

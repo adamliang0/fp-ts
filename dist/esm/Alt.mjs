@@ -1,4 +1,1 @@
-function altAll(F) {
-    return (startWith)=>(as)=>as.reduce((acc, a)=>F.alt(acc, ()=>a), startWith);
-}
-export { altAll };
+function t(t){return e=>l=>l.reduce((e,l)=>t.alt(e,()=>l),e)}export{t as altAll};

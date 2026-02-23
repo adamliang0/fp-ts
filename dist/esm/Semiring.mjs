@@ -1,3 +1,1 @@
-import { getSemiring } from "./function.mjs";
-const getFunctionSemiring = getSemiring;
-export { getFunctionSemiring };
+import{getSemiring as t}from"./function.mjs";let i=t;export{i as getFunctionSemiring};

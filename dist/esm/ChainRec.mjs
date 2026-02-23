@@ -1,6 +1,1 @@
-const tailRec = (startWith, f)=>{
-    let ab = f(startWith);
-    while('Left' === ab._tag)ab = f(ab.left);
-    return ab.right;
-};
-export { tailRec };
+let t=(t,e)=>{let r=e(t);for(;"Left"===r._tag;)r=e(r.left);return r.right};export{t as tailRec};

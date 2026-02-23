@@ -1,16 +1,1 @@
-import { altAll } from "./Alt.mjs";
-import { getApplySemigroup } from "./Apply.mjs";
-function Alternative_altAll(F) {
-    return altAll(F)(F.zero());
-}
-function getAlternativeMonoid(F) {
-    const f = getApplySemigroup(F);
-    return (S)=>{
-        const SF = f(S);
-        return {
-            concat: (first, second)=>F.alt(SF.concat(first, second), ()=>F.alt(first, ()=>second)),
-            empty: F.zero()
-        };
-    };
-}
-export { Alternative_altAll as altAll, getAlternativeMonoid };
+import{altAll as t}from"./Alt.mjs";import{getApplySemigroup as r}from"./Apply.mjs";function e(r){return t(r)(r.zero())}function l(t){let e=r(t);return r=>{let l=e(r);return{concat:(r,e)=>t.alt(l.concat(r,e),()=>t.alt(r,()=>e)),empty:t.zero()}}}export{e as altAll,l as getAlternativeMonoid};

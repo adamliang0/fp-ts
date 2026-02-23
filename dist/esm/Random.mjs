@@ -1,12 +1,1 @@
-import { pipe } from "./function.mjs";
-import { map } from "./IO.mjs";
-const random = ()=>Math.random();
-function randomInt(low, high) {
-    return pipe(random, map((n)=>Math.floor((high - low + 1) * n + low)));
-}
-function randomRange(min, max) {
-    return pipe(random, map((n)=>(max - min) * n + min));
-}
-const randomBool = /*#__PURE__*/ pipe(random, map((n)=>n < 0.5));
-const randomElem = (as)=>pipe(randomInt(0, as.length - 1), map((i)=>as[i]));
-export { random, randomBool, randomElem, randomInt, randomRange };
+import{pipe as o}from"./function.mjs";import{map as n}from"./IO.mjs";let r=()=>Math.random();function t(t,m){return o(r,n(o=>Math.floor((m-t+1)*o+t)))}function m(t,m){return o(r,n(o=>(m-t)*o+t))}let a=o(r,n(o=>o<.5)),e=r=>o(t(0,r.length-1),n(o=>r[o]));export{r as random,a as randomBool,e as randomElem,t as randomInt,m as randomRange};

@@ -1,12 +1,1 @@
-import { getRing } from "./function.mjs";
-const tuple = (...rings)=>({
-        add: (x, y)=>rings.map((R, i)=>R.add(x[i], y[i])),
-        zero: rings.map((R)=>R.zero),
-        mul: (x, y)=>rings.map((R, i)=>R.mul(x[i], y[i])),
-        one: rings.map((R)=>R.one),
-        sub: (x, y)=>rings.map((R, i)=>R.sub(x[i], y[i]))
-    });
-const negate = (R)=>(a)=>R.sub(R.zero, a);
-const getTupleRing = tuple;
-const getFunctionRing = getRing;
-export { getFunctionRing, getTupleRing, negate, tuple };
+import{getRing as e}from"./function.mjs";let m=(...e)=>({add:(m,o)=>e.map((e,n)=>e.add(m[n],o[n])),zero:e.map(e=>e.zero),mul:(m,o)=>e.map((e,n)=>e.mul(m[n],o[n])),one:e.map(e=>e.one),sub:(m,o)=>e.map((e,n)=>e.sub(m[n],o[n]))}),o=e=>m=>e.sub(e.zero,m),n=m,p=e;export{p as getFunctionRing,n as getTupleRing,o as negate,m as tuple};

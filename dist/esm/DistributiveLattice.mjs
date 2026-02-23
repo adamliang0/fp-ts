@@ -1,8 +1,1 @@
-import { max, min } from "./Ord.mjs";
-function getMinMaxDistributiveLattice(O) {
-    return {
-        meet: min(O),
-        join: max(O)
-    };
-}
-export { getMinMaxDistributiveLattice };
+import{max as t,min as i}from"./Ord.mjs";function e(e){return{meet:i(e),join:t(e)}}export{e as getMinMaxDistributiveLattice};

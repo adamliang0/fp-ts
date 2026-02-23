@@ -1,9 +1,1 @@
-import { tryCatch } from "./Either.mjs";
-import { identity } from "./function.mjs";
-const parse = (s)=>tryCatch(()=>JSON.parse(s), identity);
-const stringify = (a)=>tryCatch(()=>{
-        const s = JSON.stringify(a);
-        if ('string' != typeof s) throw new Error('Converting unsupported structure to JSON');
-        return s;
-    }, identity);
-export { parse, stringify };
+import{tryCatch as r}from"./Either.mjs";import{identity as t}from"./function.mjs";let o=o=>r(()=>JSON.parse(o),t),e=o=>r(()=>{let r=JSON.stringify(o);if("string"!=typeof r)throw Error("Converting unsupported structure to JSON");return r},t);export{o as parse,e as stringify};

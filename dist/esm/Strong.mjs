@@ -1,18 +1,1 @@
-import { identity } from "./function.mjs";
-function split(S, C) {
-    return (pab, pcd)=>C.compose(S.second(pcd), S.first(pab));
-}
-function fanOut(S, C) {
-    const splitSC = split(S, C);
-    return (pab, pac)=>C.compose(splitSC(pab, pac), S.promap(C.id(), identity, (a)=>[
-                a,
-                a
-            ]));
-}
-function splitStrong(F) {
-    return split(F, F);
-}
-function fanout(F) {
-    return fanOut(F, F);
-}
-export { fanOut, fanout, split, splitStrong };
+import{identity as n}from"./function.mjs";function t(n,t){return(o,r)=>t.compose(n.second(r),n.first(o))}function o(o,r){let u=t(o,r);return(t,i)=>r.compose(u(t,i),o.promap(r.id(),n,n=>[n,n]))}function r(n){return t(n,n)}function u(n){return o(n,n)}export{o as fanOut,u as fanout,t as split,r as splitStrong};
