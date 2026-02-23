@@ -90,7 +90,7 @@ export function delay(millis: number): <A>(ma: Task<A>) => Task<A> {
   return (ma) => () =>
     new Promise((resolve) => {
       setTimeout(() => {
-        Promise.resolve().then(ma).then(resolve)
+        void Promise.resolve().then(ma).then(resolve)
       }, millis)
     })
 }
@@ -122,6 +122,17 @@ export const ap: <A>(fa: Task<A>) => <B>(fab: Task<(a: A) => B>) => Task<B> = (f
 export const of: <A>(a: A) => Task<A> = (a) => () => Promise.resolve(a)
 
 /**
+ * Chains two tasks, passing the resolved value of the first as input to the second.
+ *
+ * @example
+ * import { flatMap, of } from 'fp-ts/Task'
+ *
+ * const task1 = of(2)
+ * const task2 = (n: number) => of(n * 3)
+ *
+ * const chained = flatMap(task2)(task1)
+ * // chained() resolves to 6
+ *
  * @category sequencing
  * @since 2.14.0
  */
