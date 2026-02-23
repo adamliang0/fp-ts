@@ -644,7 +644,7 @@ Added in v2.6.0
 
 ## mapLeft
 
-Map a function over the first type argument of a bifunctor.
+Map a function over the first type argument of a bifunctor (two-parameter type).
 
 **Signature**
 

@@ -31,6 +31,7 @@ Added in v2.0.0
   - [fromNullable](#fromnullable)
   - [fromNullableK](#fromnullablek)
   - [getOrElse](#getorelse)
+  - [getOrElseW](#getorelsew)
   - [left](#left)
   - [leftF](#leftf)
   - [map](#map)
@@ -480,6 +481,37 @@ export declare function getOrElse<M>(
 ```
 
 Added in v2.10.0
+
+## getOrElseW
+
+Less strict version of [`getOrElse`](#getorelse).
+
+**Signature**
+
+```ts
+export declare function getOrElseW<M extends URIS3>(
+  M: Monad3<M>
+): <E, R, ME, B>(
+  onLeft: (e: E) => Kind3<M, R, ME, B>
+) => <A>(ma: Kind3<M, R, ME, Either<E, A>>) => Kind3<M, R, ME, A | B>
+export declare function getOrElseW<M extends URIS3, ME>(
+  M: Monad3C<M, ME>
+): <E, R, B>(onLeft: (e: E) => Kind3<M, R, ME, B>) => <A>(ma: Kind3<M, R, ME, Either<E, A>>) => Kind3<M, R, ME, A | B>
+export declare function getOrElseW<M extends URIS2>(
+  M: Monad2<M>
+): <E, ME, B>(onLeft: (e: E) => Kind2<M, ME, B>) => <A>(ma: Kind2<M, ME, Either<E, A>>) => Kind2<M, ME, A | B>
+export declare function getOrElseW<M extends URIS2, ME>(
+  M: Monad2C<M, ME>
+): <E, B>(onLeft: (e: E) => Kind2<M, ME, B>) => <A>(ma: Kind2<M, ME, Either<E, A>>) => Kind2<M, ME, A | B>
+export declare function getOrElseW<M extends URIS>(
+  M: Monad1<M>
+): <E, B>(onLeft: (e: E) => Kind<M, B>) => <A>(ma: Kind<M, Either<E, A>>) => Kind<M, A | B>
+export declare function getOrElseW<M>(
+  M: Monad<M>
+): <E, B>(onLeft: (e: E) => HKT<M, B>) => <A>(ma: HKT<M, Either<E, A>>) => HKT<M, A | B>
+```
+
+Added in v2.16.12
 
 ## left
 

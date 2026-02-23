@@ -1207,7 +1207,7 @@ export declare const apFirstW: <R2, B>(
 ) => <R1, A>(first: ReaderTask<R1, A>) => ReaderTask<R1 & R2, A>
 ```
 
-Added in v2.17.0
+Added in v2.16.10
 
 ## apSecond
 
@@ -1235,7 +1235,7 @@ export declare const apSecondW: <R2, B>(
 ) => <R1, A>(first: ReaderTask<R1, A>) => ReaderTask<R1 & R2, B>
 ```
 
-Added in v2.17.0
+Added in v2.16.10
 
 ## apW
 

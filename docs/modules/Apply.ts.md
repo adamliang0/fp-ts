@@ -551,17 +551,39 @@ export declare function sequenceS<F extends URIS4>(
   F: Apply4<F>
 ): <S, R, E, NER extends Record<string, Kind4<F, S, R, E, any>>>(
   r: EnforceNonEmptyRecord<NER> & Record<string, Kind4<F, S, R, E, any>>
-) => Kind4<F, S, R, E, { [K in keyof NER]: [NER[K]] extends [Kind4<F, any, any, any, infer A>] ? A : never }>
+) => Kind4<
+  F,
+  S,
+  R,
+  E,
+  {
+    [K in keyof NER]: [NER[K]] extends [Kind4<F, any, any, any, infer A>] ? A : never
+  }
+>
 export declare function sequenceS<F extends URIS3>(
   F: Apply3<F>
 ): <R, E, NER extends Record<string, Kind3<F, R, E, any>>>(
   r: EnforceNonEmptyRecord<NER> & Record<string, Kind3<F, R, E, any>>
-) => Kind3<F, R, E, { [K in keyof NER]: [NER[K]] extends [Kind3<F, any, any, infer A>] ? A : never }>
+) => Kind3<
+  F,
+  R,
+  E,
+  {
+    [K in keyof NER]: [NER[K]] extends [Kind3<F, any, any, infer A>] ? A : never
+  }
+>
 export declare function sequenceS<F extends URIS3, E>(
   F: Apply3C<F, E>
 ): <R, NER extends Record<string, Kind3<F, R, E, any>>>(
   r: EnforceNonEmptyRecord<NER> & Record<string, Kind3<F, R, E, any>>
-) => Kind3<F, R, E, { [K in keyof NER]: [NER[K]] extends [Kind3<F, any, any, infer A>] ? A : never }>
+) => Kind3<
+  F,
+  R,
+  E,
+  {
+    [K in keyof NER]: [NER[K]] extends [Kind3<F, any, any, infer A>] ? A : never
+  }
+>
 export declare function sequenceS<F extends URIS2>(
   F: Apply2<F>
 ): <E, NER extends Record<string, Kind2<F, E, any>>>(

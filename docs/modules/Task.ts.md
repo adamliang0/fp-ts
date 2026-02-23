@@ -523,6 +523,8 @@ Added in v2.0.0
 
 ## flatMap
 
+Chains two tasks, passing the resolved value of the first as input to the second.
+
 **Signature**
 
 ```ts
@@ -530,6 +532,18 @@ export declare const flatMap: {
   <A, B>(f: (a: A) => Task<B>): (ma: Task<A>) => Task<B>
   <A, B>(ma: Task<A>, f: (a: A) => Task<B>): Task<B>
 }
+```
+
+**Example**
+
+```ts
+import { flatMap, of } from 'fp-ts/Task'
+
+const task1 = of(2)
+const task2 = (n: number) => of(n * 3)
+
+const chained = flatMap(task2)(task1)
+// chained() resolves to 6
 ```
 
 Added in v2.14.0
