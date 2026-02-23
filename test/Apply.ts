@@ -1,6 +1,9 @@
 import { sequenceS, sequenceT } from '../src/Apply'
+import * as _ from '../src/Apply'
 import * as E from '../src/Either'
 import { pipe } from '../src/function'
+import * as Fu from '../src/Functor'
+import { Kind, URIS } from '../src/HKT'
 import * as O from '../src/Option'
 import * as RA from '../src/ReadonlyArray'
 
@@ -127,5 +130,41 @@ describe('Apply', () => {
         '(3, c, false)'
       ]
     )
+  })
+})
+
+describe('Apply (type-level)', () => {
+  it('apS', () => {
+    const apSFn =
+      <F extends URIS>(F: _.Apply1<F>) =>
+      (s: Kind<F, string>, n: Kind<F, number>): Kind<F, { s: string; n: number }> => {
+        const apS = _.apS(F)
+        const bindTo = Fu.bindTo(F)
+        return pipe(s, bindTo('s'), apS('n', n))
+      }
+    expectTypeOf(apSFn).toBeFunction()
+  })
+
+  const f = _.sequenceS(E.either)
+  it('sequenceS rejects mismatched error types', () => {
+    const s1: E.Either<string, number> = E.right(1)
+    const s4: E.Either<boolean, void> = E.right(undefined)
+    // @ts-expect-error
+    f({ s1, s4 })
+  })
+
+  it('sequenceS infers correct result type', () => {
+    const s1: E.Either<string, number> = E.right(1)
+    const s2: E.Either<string, string> = E.right('a')
+    const s3: E.Either<string, boolean> = E.right(true)
+    expectTypeOf(f({ s1, s2, s3 })).toEqualTypeOf<E.Either<string, { s1: number; s2: string; s3: boolean }>>()
+  })
+
+  it('sequenceT infers correct tuple type', () => {
+    const f = _.sequenceT(E.either)
+    const s1: E.Either<string, number> = E.right(1)
+    const s2: E.Either<string, string> = E.right('a')
+    const s3: E.Either<string, boolean> = E.right(true)
+    expectTypeOf(f(s1, s2, s3)).toEqualTypeOf<E.Either<string, [number, string, boolean]>>()
   })
 })
