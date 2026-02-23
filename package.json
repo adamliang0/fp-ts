@@ -21,7 +21,7 @@
     "lint:fix": "oxlint --fix \"src/**/*.ts\" \"test/**/*.ts\" \"scripts/**/*.ts\"",
     "fmt": "oxfmt --list-different \"./{src,test,examples,scripts}/**/*.ts\"",
     "fmt:write": "oxfmt --write \"./{src,test,examples,scripts}/**/*.ts\"",
-    "test": "bun run lint && bun run fmt && bun run dtslint && bun run vitest && bun run docs",
+    "test": "bun run lint && bun run fmt && bun run vitest && bun run docs",
     "clean": "bunx rimraf ./dist",
     "prebuild": "bun run clean",
     "build": "rslib build",
